@@ -1,0 +1,27 @@
+{
+	"name": "hercules-gym",
+	"private": true,
+	"workspaces": [
+		"frontend",
+		"backend",
+		"shared"
+	],
+	"scripts": {
+		"dev": "turbo run dev",
+		"build": "turbo run build",
+		"start": "turbo run start",
+		"lint": "turbo run lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
+		"clean": "turbo run clean && rm -rf node_modules"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.24",
+		"prettier": "^3.2.5",
+		"turbo": "^1.12.4",
+		"typescript": "^5.3.3"
+	},
+	"packageManager": "npm@10.2.4",
+	"dependencies": {
+		"framer-motion": "^12.23.0"
+	}
+}
