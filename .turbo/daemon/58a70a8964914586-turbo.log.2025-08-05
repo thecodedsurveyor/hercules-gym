@@ -1,0 +1,404 @@
+2025-08-05T06:58:46.934541Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\cookies"), AnchoredSystemPathBuf(".turbo\\cookies\\1.cookie"), AnchoredSystemPathBuf(".turbo\\cookies\\.turbo-cookie"), AnchoredSystemPathBuf(".turbo\\daemon")}
+2025-08-05T06:58:46.935727Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:58:47.137160Z  WARN daemon_server: turborepo_lib::commands::daemon: daemon already running
+2025-08-05T06:58:48.018278Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:58:48.018388Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:58:55.028201Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\cookies")}
+2025-08-05T06:58:55.028230Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:58:57.625811Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:58:57.625917Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:59:04.827233Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\.next")}
+2025-08-05T06:59:04.827956Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T06:59:09.024617Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\.next")}
+2025-08-05T06:59:09.024668Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T06:59:12.223425Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T06:59:12.224668Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\.next")}
+2025-08-05T06:59:12.224699Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T06:59:12.225111Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T06:59:13.078120Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:59:13.078252Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:59:13.153062Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:59:13.153552Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:59:32.019647Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:59:32.019908Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T06:59:32.118980Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T06:59:32.119021Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:00:47.219731Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:00:47.219772Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:00:47.323107Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:00:47.323142Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:01.321766Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:01.321856Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:01.416690Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:01.416735Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:06.917100Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:06.917156Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:07.026673Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:07.026716Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:07.120251Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:07.120292Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:04:07.229129Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:04:07.229168Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:06:47.723309Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\about\\page.tsx")}
+2025-08-05T07:06:47.723509Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:06:59.521968Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:06:59.522012Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:07:00.522856Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:07:00.522889Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:07:03.849504Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\page.tsx")}
+2025-08-05T07:07:03.849600Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:07:22.217382Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\pricing\\page.tsx")}
+2025-08-05T07:07:22.217449Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:07:22.791242Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\pricing\\page.tsx")}
+2025-08-05T07:07:22.791284Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:07:22.791619Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:07:36.651686Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\blog\\page.tsx")}
+2025-08-05T07:07:36.651823Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:08:32.728831Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:08:32.728871Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:08:32.825089Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:08:32.825162Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:14:43.325017Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:14:43.325146Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:14:43.423791Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:14:43.423846Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:14:45.324807Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:14:45.324906Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:14:45.425045Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:14:45.425103Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:15:38.326995Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:15:38.327080Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:20:04.328342Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:20:04.328525Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:20:04.416876Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:20:04.416931Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:20:06.330832Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:20:06.330868Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:20:59.019109Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:20:59.019156Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:21:02.622288Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:21:02.622329Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:24:00.042300Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:24:00.042348Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:25:15.527761Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:25:15.527809Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:25:25.430547Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:25:25.430821Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:25:30.418338Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:25:30.418378Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:25:30.528142Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:25:30.528178Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:25:38.824842Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:25:38.824893Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:26:06.120003Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:26:06.120048Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:26:49.323717Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T07:26:49.323778Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:28:42.022616Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:28:42.022663Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:28:42.354980Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:29:09.845672Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:29:09.845710Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:29:26.429280Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:29:26.429446Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:29:35.634313Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:29:35.634361Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:29:36.273118Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:29:36.273437Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:29:36.273455Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:29:36.273581Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:30:10.429372Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TeamSection.tsx")}
+2025-08-05T07:30:10.429506Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:30:10.618504Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:30:46.425354Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:30:46.425400Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:30:48.620587Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:30:48.620620Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:35:08.321975Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\Footer.tsx")}
+2025-08-05T07:35:08.322206Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:35:32.436704Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TestimonialsSection.tsx")}
+2025-08-05T07:35:32.436880Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:35:43.125481Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\terms\\page.tsx")}
+2025-08-05T07:35:43.125528Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:35:53.319115Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\privacy-policy\\page.tsx")}
+2025-08-05T07:35:53.319162Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:36:05.321640Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\TestimonialsSection.tsx")}
+2025-08-05T07:36:05.321852Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:36:06.455164Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\terms\\page.tsx"), AnchoredSystemPathBuf("frontend\\components\\landing\\Footer.tsx"), AnchoredSystemPathBuf("frontend\\components\\landing\\TestimonialsSection.tsx"), AnchoredSystemPathBuf("frontend\\app\\privacy-policy\\page.tsx")}
+2025-08-05T07:36:06.455217Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:36:06.455545Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:36:07.421223Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:36:07.421391Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:36:09.477466Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:36:09.477525Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:36:09.516917Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:36:09.516951Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:37:16.921451Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:37:16.921525Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:37:17.020953Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:37:17.021114Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:37:37.832928Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:37:37.832976Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:37:46.730742Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:37:46.730809Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:37:47.009115Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:38:10.321343Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\.next")}
+2025-08-05T07:38:10.321384Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:38:10.497933Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:38:33.321423Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:38:33.321468Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:39:04.121578Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:39:04.121625Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:39:17.044316Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:39:17.044401Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:39:33.326819Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\PricingSection.tsx")}
+2025-08-05T07:39:33.326971Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:41:28.417815Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:41:28.417862Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:41:30.519561Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:41:30.519612Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:45:46.319519Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting"), AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T07:45:46.319574Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:45:46.843910Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs")}
+2025-08-05T07:45:46.844040Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:45:46.844589Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:45:48.940299Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T07:45:48.940350Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:46:49.524134Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:46:49.524181Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:46:51.433496Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:46:51.435086Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:46:51.776943Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:46:51.776993Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:47:04.818383Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs"), AnchoredSystemPathBuf("frontend\\app\\programs\\cardio")}
+2025-08-05T07:47:04.818430Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:47:05.140644Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio"), AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T07:47:05.140694Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:47:05.140838Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:47:06.848510Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T07:47:06.848618Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:48:22.422869Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:48:22.422981Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:48:22.526772Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:48:22.527009Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:48:53.117102Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding")}
+2025-08-05T07:48:53.117202Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:48:53.635178Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs")}
+2025-08-05T07:48:53.635209Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:48:53.635430Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:48:55.735045Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T07:48:55.735087Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:50:09.223884Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout")}
+2025-08-05T07:50:09.224084Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:50:09.705962Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs")}
+2025-08-05T07:50:09.705999Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:50:09.706228Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T07:50:11.431207Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T07:50:11.431252Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:50:25.322596Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T07:50:25.322650Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:50:26.947894Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T07:50:26.948081Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T07:52:10.526614Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:52:10.526743Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T07:52:12.823370Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T07:52:12.823412Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:06:02.004868Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:06:02.004908Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:06:18.099753Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:06:18.099799Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:10:04.805787Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\Footer.tsx")}
+2025-08-05T10:10:04.805819Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:10:10.908470Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\Footer.tsx")}
+2025-08-05T10:10:10.908560Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:10:11.393477Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:11:16.501912Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:11:16.501953Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:11:18.402158Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:11:18.402214Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:11:40.633217Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\layout.tsx")}
+2025-08-05T10:11:40.633431Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:11:40.831966Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\layout.tsx")}
+2025-08-05T10:11:40.831990Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:11:40.832136Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:11:50.000374Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\layout.tsx")}
+2025-08-05T10:11:50.000399Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:12:00.108900Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\layout.tsx")}
+2025-08-05T10:12:00.108987Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:12:00.215323Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:15:15.133827Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\lib\\unsplash.ts"), AnchoredSystemPathBuf("frontend\\lib")}
+2025-08-05T10:15:15.133864Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:15:16.603963Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\lib\\unsplash.ts")}
+2025-08-05T10:15:16.604056Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:15:25.109676Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\hooks\\use-unsplash-images.ts"), AnchoredSystemPathBuf("frontend\\hooks")}
+2025-08-05T10:15:25.109732Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:15:26.309257Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\hooks\\use-unsplash-images.ts")}
+2025-08-05T10:15:26.309434Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:16:36.911327Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\ui\\unsplash-image.tsx"), AnchoredSystemPathBuf("frontend\\components\\ui")}
+2025-08-05T10:16:36.911406Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:16:37.499234Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:16:37.499254Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:16:38.398703Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\ui\\unsplash-image.tsx")}
+2025-08-05T10:16:38.398779Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:16:39.700380Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:16:39.700437Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:17:00.504028Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\ui\\unsplash-image.tsx")}
+2025-08-05T10:17:00.504050Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:17:22.006744Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\ui\\unsplash-image.tsx")}
+2025-08-05T10:17:22.006765Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:18:03.613101Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:18:03.613123Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:18:16.199871Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:18:16.199915Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:18:43.007827Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:18:43.007850Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:19:00.803625Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\examples"), AnchoredSystemPathBuf("frontend\\components"), AnchoredSystemPathBuf("frontend\\components\\examples\\UnsplashExample.tsx")}
+2025-08-05T10:19:00.803926Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:19:02.804613Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\examples\\UnsplashExample.tsx")}
+2025-08-05T10:19:02.804672Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:19:37.098521Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend"), AnchoredSystemPathBuf("frontend\\docs"), AnchoredSystemPathBuf("frontend\\docs\\UNSPLASH_INTEGRATION.md")}
+2025-08-05T10:19:37.098589Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:19:37.313200Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\docs")}
+2025-08-05T10:19:37.313222Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:19:37.313320Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:19:39.009522Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\docs\\UNSPLASH_INTEGRATION.md")}
+2025-08-05T10:19:39.009601Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:20:36.700331Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:20:36.700411Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:21:58.503038Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:21:58.503114Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:22:00.407022Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:22:00.407058Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:22:21.504713Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:22:21.504738Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:22:21.583233Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:23:43.295787Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend")}
+2025-08-05T10:23:43.295818Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:23:43.409096Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:27:19.503808Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:27:19.503841Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:27:21.001609Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:27:21.001646Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:32:40.501921Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:32:40.501978Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:32:42.202218Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:32:42.202289Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:33:27.005677Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:33:27.005701Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:33:32.713937Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:33:32.713956Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:33:46.298631Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:33:46.298696Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:33:57.902782Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:33:57.902805Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:35:50.810095Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\landing\\InstagramSection.tsx")}
+2025-08-05T10:35:50.810163Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:35:50.917582Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:37:40.810633Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\about\\page.tsx")}
+2025-08-05T10:37:40.810659Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:43.499975Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\blog\\page.tsx")}
+2025-08-05T10:37:43.500002Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:46.697318Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\get-started\\page.tsx")}
+2025-08-05T10:37:46.697384Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:49.102339Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\login\\page.tsx")}
+2025-08-05T10:37:49.102413Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:51.907714Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\pricing\\page.tsx")}
+2025-08-05T10:37:51.907793Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:54.903573Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\page.tsx")}
+2025-08-05T10:37:54.903650Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:37:56.704985Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\components\\layout\\Template.tsx")}
+2025-08-05T10:37:56.705055Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:38:01.498355Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:38:01.498381Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:38:02.904032Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\blog\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\get-started\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\pricing\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\about\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\login\\page.tsx")}
+2025-08-05T10:38:02.904068Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:38:03.501052Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:38:03.501327Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\page.tsx"), AnchoredSystemPathBuf("frontend\\components\\layout\\Template.tsx"), AnchoredSystemPathBuf("frontend\\app\\login\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\blog\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\pricing\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\get-started\\page.tsx")}
+2025-08-05T10:38:03.501340Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:38:03.501450Z  WARN turborepo_lib::package_changes_watcher: hashes are the same, no need to rerun
+2025-08-05T10:38:03.796840Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:38:03.796870Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:41:22.197692Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:41:22.197714Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:41:31.304233Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:41:31.304261Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:41:41.705765Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:41:41.705790Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:41:58.402542Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:41:58.402568Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:42:15.304629Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:42:15.304699Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:42:30.698750Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:42:30.698837Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:42:58.700094Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:42:58.700162Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:43:14.417569Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:43:14.417592Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:43:22.609478Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:43:22.609563Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:43:24.015564Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:43:24.015589Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:43:24.895803Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:43:24.895905Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:43:37.812507Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:43:37.812529Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:44:04.405034Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:44:04.405112Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:44:26.826068Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:44:26.826091Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:44:43.623323Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:44:43.623356Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:44:59.106829Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:44:59.106856Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:45:31.819007Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:45:31.819044Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:45:41.008351Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:45:41.008377Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:45:53.036484Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:45:53.036507Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:46:21.108723Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:46:21.108783Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:46:32.605649Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:46:32.605669Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:46:47.506477Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:46:47.506501Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:46:58.610209Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:46:58.610231Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:47:12.903203Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:47:12.903282Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:47:21.700140Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:47:21.700163Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:47:33.605954Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:47:33.606023Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:47:54.964698Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:47:54.964719Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:06.403112Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:48:06.403185Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:22.705526Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:48:22.705549Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:31.996998Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:48:31.997085Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:43.105468Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:48:43.105493Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:43.399726Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx"), AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:48:43.399749Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:48:45.202058Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:48:45.202106Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:48:48.104934Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:48:48.104997Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:48:48.206039Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:48:48.206130Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:54:04.502418Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:54:04.502484Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:54:04.609847Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:54:04.609871Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:54:06.104330Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo\\daemon\\58a70a8964914586-turbo.log.2025-08-05")}
+2025-08-05T10:54:06.104400Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-08-05T10:55:12.797223Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\cardio\\page.tsx")}
+2025-08-05T10:55:12.797245Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:55:50.106308Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\weight-lifting\\page.tsx")}
+2025-08-05T10:55:50.111091Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:56:13.399284Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\bodybuilding\\page.tsx")}
+2025-08-05T10:56:13.399354Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))
+2025-08-05T10:56:42.304309Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("frontend\\app\\programs\\regular-workout\\page.tsx")}
+2025-08-05T10:56:42.304345Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Other("nextjs"), path: AnchoredSystemPathBuf("frontend") }}))

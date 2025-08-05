@@ -29,8 +29,8 @@ const Coaches = () => {
 
 	const coaches: Coach[] = [
 		{
-			id: 'rohan',
-			name: 'ROHAN DESHMUKH',
+			id: 'adebayo',
+			name: 'ADEBAYO ADELEKE',
 			title: 'Personal Trainer',
 			image: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=600',
 			specialties: [
@@ -41,11 +41,11 @@ const Coaches = () => {
 			experience: '8+ Years',
 			rating: 4.9,
 			clients: 150,
-			bio: 'Rohan specializes in strength training and has helped over 150 clients achieve their fitness goals through personalized workout plans.',
+			bio: 'Adebayo specializes in strength training and has helped over 150 clients achieve their fitness goals through personalized workout plans. He brings a unique blend of traditional Nigerian fitness wisdom with modern training techniques.',
 		},
 		{
-			id: 'sneha',
-			name: 'SNEHA BHATIA',
+			id: 'chioma',
+			name: 'CHIOMA OKAFOR',
 			title: 'Personal Trainer',
 			image: 'https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=600',
 			specialties: [
@@ -56,11 +56,11 @@ const Coaches = () => {
 			experience: '6+ Years',
 			rating: 4.8,
 			clients: 120,
-			bio: 'Sneha brings a holistic approach to fitness, combining physical training with mental wellness through yoga and mindfulness practices.',
+			bio: 'Chioma brings a holistic approach to fitness, combining physical training with mental wellness through yoga and mindfulness practices. Her sessions incorporate elements of Nigerian wellness traditions.',
 		},
 		{
-			id: 'aman',
-			name: 'AMAN RATHORE',
+			id: 'emeka',
+			name: 'EMEKA NWANKWO',
 			title: 'Personal Trainer',
 			image: 'https://images.pexels.com/photos/1547248/pexels-photo-1547248.jpeg?auto=compress&cs=tinysrgb&w=600',
 			specialties: [
@@ -71,7 +71,7 @@ const Coaches = () => {
 			experience: '10+ Years',
 			rating: 4.9,
 			clients: 200,
-			bio: 'Aman is our HIIT specialist, focusing on high-intensity training that delivers maximum results in minimum time for busy professionals.',
+			bio: 'Emeka is our HIIT specialist, focusing on high-intensity training that delivers maximum results in minimum time for busy professionals. He has trained numerous Nigerian athletes and fitness enthusiasts.',
 		},
 	];
 
@@ -82,7 +82,7 @@ const Coaches = () => {
 	};
 
 	return (
-		<section className='py-12 md:py-20 bg-black'>
+		<section className='py-12 md:py-20 bg-black px-4 sm:px-8'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Header */}
 				<div className='mb-2 pl-0'>
@@ -109,7 +109,7 @@ const Coaches = () => {
 				</div>
 
 				{/* Coaches Grid */}
-				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
+				<div className='flex flex-col lg:grid lg:grid-cols-3 gap-6 md:gap-8'>
 					{coaches.map((coach) => (
 						<div
 							key={coach.id}
@@ -171,6 +171,64 @@ const Coaches = () => {
 									</div>
 								</div>
 
+								{/* Desktop Overlay - Black background with sliding info */}
+								<div
+									className={`hidden lg:block absolute inset-0 bg-black/90 transition-all duration-500 ease-in-out ${
+										selectedCoach ===
+										coach.id
+											? 'opacity-100'
+											: 'opacity-0 pointer-events-none'
+									}`}
+								>
+									<div
+										className={`absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ease-in-out ${
+											selectedCoach ===
+											coach.id
+												? 'translate-y-0'
+												: 'translate-y-full'
+										}`}
+									>
+										<p className='text-gray-300 text-base leading-relaxed mb-4'>
+											{coach.bio}
+										</p>
+
+										<div className='mb-4'>
+											<h4 className='text-white font-semibold text-base mb-2'>
+												Specialties:
+											</h4>
+											<div className='flex flex-wrap gap-2'>
+												{coach.specialties.map(
+													(
+														specialty,
+														idx
+													) => (
+														<span
+															key={
+																idx
+															}
+															className='bg-brand/20 text-brand px-3 py-1 rounded-full text-xs font-medium'
+														>
+															{
+																specialty
+															}
+														</span>
+													)
+												)}
+											</div>
+										</div>
+
+										<button
+											className='w-full bg-brand hover:bg-brand/80 text-black py-3 md:py-4 px-6 rounded-xl font-bold text-sm transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+											onClick={() =>
+												(window.location.href =
+													'/get-started')
+											}
+										>
+											Book Session
+										</button>
+									</div>
+								</div>
+
 								{/* Expand Button */}
 								<button
 									onClick={() =>
@@ -178,15 +236,15 @@ const Coaches = () => {
 											coach.id
 										)
 									}
-									className='absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-brand hover:bg-brand/80 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-brand/25'
+									className='absolute top-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-brand hover:bg-brand/80 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-brand/25 z-10'
 								>
 									<ChevronRight className='w-5 h-5 md:w-6 md:h-6 text-black' />
 								</button>
 							</div>
 
-							{/* Expanded Details */}
+							{/* Mobile Expanded Details */}
 							<div
-								className={`transition-all duration-500 ease-in-out overflow-hidden ${
+								className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
 									selectedCoach ===
 									coach.id
 										? 'max-h-96'
@@ -223,7 +281,13 @@ const Coaches = () => {
 										</div>
 									</div>
 
-									<button className='w-full bg-brand hover:bg-brand/80 text-black py-3 px-6 rounded-xl font-bold text-sm transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+									<button
+										className='w-full bg-brand hover:bg-brand/80 text-black py-3 md:py-4 px-6 rounded-xl font-bold text-sm transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+										onClick={() =>
+											(window.location.href =
+												'/get-started')
+										}
+									>
 										Book Session
 									</button>
 								</div>
@@ -246,10 +310,22 @@ const Coaches = () => {
 							discover your potential.
 						</p>
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-							<button className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<button
+								className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/get-started')
+								}
+							>
 								Book Free Consultation
 							</button>
-							<button className='w-full sm:w-auto bg-transparent border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-lg transition-all duration-200 hover:bg-gray-800/50'>
+							<button
+								className='w-full sm:w-auto bg-transparent border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-sm md:text-lg transition-all duration-200 hover:bg-gray-800/50'
+								onClick={() =>
+									(window.location.href =
+										'/coaches')
+								}
+							>
 								View All Coaches
 							</button>
 						</div>

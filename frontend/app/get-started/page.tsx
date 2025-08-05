@@ -20,7 +20,6 @@ import {
 	X,
 	Loader2,
 } from 'lucide-react';
-import Footer from '@/components/landing/Footer';
 
 export default function GetStartedPage() {
 	const [step, setStep] = useState(1);
@@ -162,7 +161,6 @@ export default function GetStartedPage() {
 						</p>
 					</div>
 				</div>
-				<Footer />
 			</>
 		);
 	}
@@ -809,7 +807,6 @@ export default function GetStartedPage() {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 }

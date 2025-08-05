@@ -21,16 +21,16 @@ const Footer = () => {
 	const programs = [
 		{
 			name: 'Weight Lifting',
-			href: '/programs#weight-lifting',
+			href: '/programs/weight-lifting',
 		},
-		{ name: 'Cardio', href: '/programs#cardio' },
+		{ name: 'Cardio', href: '/programs/cardio' },
 		{
 			name: 'Bodybuilding',
-			href: '/programs#bodybuilding',
+			href: '/programs/bodybuilding',
 		},
 		{
 			name: 'Regular Workout',
-			href: '/programs#regular-workout',
+			href: '/programs/regular-workout',
 		},
 	];
 
@@ -159,10 +159,10 @@ const Footer = () => {
 								<Phone className='w-5 h-5 text-brand mt-0.5 flex-shrink-0' />
 								<div>
 									<a
-										href='tel:+919876543210'
+										href='tel:+2348165229396'
 										className='text-gray-300 hover:text-brand text-sm transition-colors duration-200'
 									>
-										+91 98765 43210
+										+234 816 522 9396
 									</a>
 								</div>
 							</div>
@@ -183,10 +183,11 @@ const Footer = () => {
 								<MapPin className='w-5 h-5 text-brand mt-0.5 flex-shrink-0' />
 								<div>
 									<p className='text-gray-300 text-sm leading-relaxed'>
-										Raj Studio, 2nd
-										Floor,
+										Plot 2425 Herbert
+										Macaulay Way,
 										<br />
-										Gurugram, India
+										Wuse Zone 4, Abuja -
+										Nigeria
 									</p>
 								</div>
 							</div>

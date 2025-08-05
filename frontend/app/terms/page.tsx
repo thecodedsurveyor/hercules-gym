@@ -292,13 +292,14 @@ export default function TermsPage() {
 										legal@herculesgym.com
 									</li>
 									<li>
-										Phone: +91 98765
-										43210
+										Phone: +234 816 522
+										9396
 									</li>
 									<li>
-										Address: Raj Studio,
-										2nd Floor, Gurugram,
-										India
+										Address: Plot 2425
+										Herbert Macaulay
+										Way, Wuse Zone 4,
+										Abuja - Nigeria
 									</li>
 								</ul>
 							</div>

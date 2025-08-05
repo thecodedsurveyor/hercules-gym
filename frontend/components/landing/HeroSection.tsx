@@ -109,7 +109,13 @@ export default function HeroSection() {
 							}}
 							className='flex flex-col sm:flex-row gap-4'
 						>
-							<Button className='w-full md:w-auto bg-brand hover:bg-brand/80 text-black text-base md:text-lg px-6 md:px-8 py-8 md:py-4 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<Button
+								className='w-full md:w-auto bg-brand hover:bg-brand/80 text-black text-base md:text-lg px-6 md:px-8 py-4 md:py-3 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/get-started')
+								}
+							>
 								Get Started Today
 							</Button>
 						</motion.div>

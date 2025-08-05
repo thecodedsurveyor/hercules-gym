@@ -32,7 +32,13 @@ export default function ProgramsSection() {
 
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8'>
 					{/* Weight Lifting */}
-					<div className='relative group overflow-hidden rounded-lg'>
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/weight-lifting')
+						}
+					>
 						<Image
 							src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
 							alt='Weight Lifting'
@@ -49,7 +55,13 @@ export default function ProgramsSection() {
 					</div>
 
 					{/* Cardio */}
-					<div className='relative group overflow-hidden rounded-lg'>
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/cardio')
+						}
+					>
 						<Image
 							src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
 							alt='Cardio'
@@ -66,7 +78,13 @@ export default function ProgramsSection() {
 					</div>
 
 					{/* Bodybuilding */}
-					<div className='relative group overflow-hidden rounded-lg'>
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/bodybuilding')
+						}
+					>
 						<Image
 							src='https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
 							alt='Bodybuilding'
@@ -83,7 +101,13 @@ export default function ProgramsSection() {
 					</div>
 
 					{/* Regular Workout */}
-					<div className='relative group overflow-hidden rounded-lg'>
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/regular-workout')
+						}
+					>
 						<Image
 							src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
 							alt='Regular Workout'
@@ -100,7 +124,13 @@ export default function ProgramsSection() {
 					</div>
 
 					{/* Screeching Workout */}
-					<div className='relative group overflow-hidden rounded-lg'>
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/screeching-workout')
+						}
+					>
 						<Image
 							src='https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
 							alt='Screeching Workout'
@@ -112,6 +142,29 @@ export default function ProgramsSection() {
 						<div className='absolute bottom-4 md:bottom-6 left-4 md:left-6'>
 							<h3 className='text-base sm:text-lg md:text-2xl font-bold'>
 								SCREECHING WORKOUT
+							</h3>
+						</div>
+					</div>
+
+					{/* Functional Training */}
+					<div
+						className='relative group overflow-hidden rounded-lg cursor-pointer transition-all duration-200 transform hover:scale-105'
+						onClick={() =>
+							(window.location.href =
+								'/programs/functional-training')
+						}
+					>
+						<Image
+							src='https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+							alt='Functional Training'
+							width={500}
+							height={320}
+							className='w-full h-60 sm:h-72 md:h-80 object-cover transition-transform group-hover:scale-110'
+						/>
+						<div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent'></div>
+						<div className='absolute bottom-4 md:bottom-6 left-4 md:left-6'>
+							<h3 className='text-base sm:text-lg md:text-2xl font-bold'>
+								FUNCTIONAL TRAINING
 							</h3>
 						</div>
 					</div>

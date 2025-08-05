@@ -36,7 +36,11 @@ export default function BlogSection() {
 						</p>
 						<Button
 							variant='outline'
-							className='w-full sm:w-auto border-brand text-black hover:bg-brand hover:text-black bg-brand text-sm md:text-base'
+							className='w-full sm:w-auto border-brand text-black hover:bg-brand hover:text-black bg-brand text-sm md:text-base py-3 md:py-4 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+							onClick={() =>
+								(window.location.href =
+									'/blog')
+							}
 						>
 							View All
 						</Button>
@@ -62,7 +66,13 @@ export default function BlogSection() {
 								THE GYM AND HOW TO AVOID
 								THEM
 							</h3>
-							<Button className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base'>
+							<Button
+								className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base py-3 md:py-4 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/blog')
+								}
+							>
 								Read More
 							</Button>
 						</CardContent>
@@ -86,7 +96,13 @@ export default function BlogSection() {
 								WHAT&apos;S THE REAL
 								DIFFERENCE?
 							</h3>
-							<Button className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base'>
+							<Button
+								className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base py-3 md:py-4 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/blog')
+								}
+							>
 								Read More
 							</Button>
 						</CardContent>
@@ -109,7 +125,13 @@ export default function BlogSection() {
 								MEAL PREP FOR MUSCLE GAIN: A
 								SIMPLE GUIDE FOR BUSY PEOPLE
 							</h3>
-							<Button className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base'>
+							<Button
+								className='w-full sm:w-auto bg-brand text-black hover:bg-brand/80 text-sm md:text-base py-3 md:py-4 font-bold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/blog')
+								}
+							>
 								Read More
 							</Button>
 						</CardContent>

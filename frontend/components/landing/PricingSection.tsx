@@ -29,7 +29,7 @@ const Pricing = () => {
 		{
 			id: 'premium',
 			name: 'PREMIUM MEMBERSHIP',
-			price: 1500,
+			price: 85000,
 			period: 'Month',
 			description:
 				'Our most comprehensive plan with all premium features',
@@ -47,7 +47,7 @@ const Pricing = () => {
 		{
 			id: 'advanced',
 			name: 'ADVANCED',
-			price: 1000,
+			price: 65000,
 			period: 'Month',
 			description:
 				'Unlock our Advanced Plan for unlimited data storage and priority support, ensuring your projects run smoothly without any interruptions or delays!',
@@ -65,7 +65,7 @@ const Pricing = () => {
 		{
 			id: 'basic',
 			name: 'BASIC',
-			price: 800,
+			price: 45000,
 			period: 'Month',
 			description:
 				'Check out our Essential Training Package, perfect for budget-friendly fitness! Get solid coaching and resources to hit your goals without overspending!',
@@ -83,7 +83,7 @@ const Pricing = () => {
 		{
 			id: 'family',
 			name: 'FAMILY PACKAGE',
-			price: 3500,
+			price: 180000,
 			period: 'Month',
 			description:
 				'Explore our Family Package for comprehensive data and keeping your loved ones fit! Enjoy plenty of storage and teamwork!',
@@ -198,7 +198,8 @@ const Pricing = () => {
 							<div className='mb-3'>
 								<div className='flex items-baseline'>
 									<span className='text-2xl font-bold'>
-										₹{plan.price}
+										₦
+										{plan.price.toLocaleString()}
 									</span>
 									<span className='text-sm ml-1 text-gray-600'>
 										/{plan.period}
@@ -226,7 +227,13 @@ const Pricing = () => {
 								)}
 							</div>
 
-							<button className='w-full bg-lime-500 hover:bg-lime-600 text-black py-3 rounded-xl font-bold text-sm transition-all duration-200'>
+							<button
+								className='w-full bg-lime-500 hover:bg-lime-600 text-black py-3 md:py-4 rounded-xl font-bold text-sm transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-lime-500/25'
+								onClick={() =>
+									(window.location.href =
+										'/pricing')
+								}
+							>
 								{plan.buttonText}
 							</button>
 						</div>
@@ -331,10 +338,8 @@ const Pricing = () => {
 																	: 'text-white'
 															}`}
 														>
-															₹
-															{
-																card.price
-															}
+															₦
+															{card.price.toLocaleString()}
 														</span>
 														<span
 															className={`text-base ml-1 transition-colors duration-500 ${
@@ -400,13 +405,12 @@ const Pricing = () => {
 
 												<button
 													onClick={() =>
-														handlePlanSelect(
-															card.id
-														)
+														(window.location.href =
+															'/pricing')
 													}
-													className={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+													className={`w-full py-3 md:py-4 rounded-xl font-bold text-sm transition-all duration-200 transform hover:scale-105 shadow-lg ${
 														isActive
-															? 'bg-lime-500 hover:bg-lime-600 text-black'
+															? 'bg-lime-500 hover:bg-lime-600 text-black hover:shadow-lime-500/25'
 															: 'bg-gray-700 hover:bg-gray-600 text-white'
 													}`}
 												>

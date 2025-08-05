@@ -1,7 +1,5 @@
 'use client';
 
-import Footer from '@/components/landing/Footer';
-
 export default function Template({
 	children,
 }: {
@@ -10,7 +8,6 @@ export default function Template({
 	return (
 		<>
 			<main className='flex-grow'>{children}</main>
-			<Footer />
 		</>
 	);
 }

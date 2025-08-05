@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 
 export default function NavigationWrapper({
@@ -27,6 +28,36 @@ export default function NavigationWrapper({
 
 	const shouldHideNavbar =
 		isAuthPage || isAuthenticatedRoute;
+
+	// Prefetch common routes for better performance
+	useEffect(() => {
+		// Prefetch common routes when component mounts
+		const prefetchRoutes = async () => {
+			// Only prefetch if we're on a page that might navigate to these routes
+			if (!isAuthPage && !isAuthenticatedRoute) {
+				// Prefetch common routes
+				const routesToPrefetch = [
+					'/dashboard',
+					'/profile',
+					'/programs',
+					'/about',
+					'/pricing',
+				];
+
+				// Use dynamic imports to prefetch routes
+				routesToPrefetch.forEach((route) => {
+					// This will trigger Next.js to prefetch the route
+					const link =
+						document.createElement('link');
+					link.rel = 'prefetch';
+					link.href = route;
+					document.head.appendChild(link);
+				});
+			}
+		};
+
+		prefetchRoutes();
+	}, [isAuthPage, isAuthenticatedRoute]);
 
 	return (
 		<>

@@ -1,162 +1,273 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Dumbbell, Menu, X } from 'lucide-react';
+import {
+	Dumbbell,
+	Menu,
+	X,
+	ChevronDown,
+} from 'lucide-react';
 
-export default function Navbar() {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+// Memoized program subpages to prevent re-renders
+const programSubpages = [
+	{
+		name: 'Regular Workout',
+		href: '/programs/regular-workout',
+	},
+	{
+		name: 'Bodybuilding',
+		href: '/programs/bodybuilding',
+	},
+	{ name: 'Cardio', href: '/programs/cardio' },
+	{
+		name: 'Weight Lifting',
+		href: '/programs/weight-lifting',
+	},
+];
 
-	return (
-		<header className='w-[95%] md:w-[90%] lg:w-[80%] mx-auto rounded-2xl bg-white/10 backdrop-blur-xl border border-white/10 shadow-lg'>
-			<nav className='px-4 md:px-8 h-20 md:h-24 flex items-center justify-between relative'>
-				{/* Logo */}
-				<Link
-					href='/'
-					className='flex items-center justify-center space-x-2 md:space-x-3'
-				>
-					<Dumbbell className='w-7 h-7 md:w-8 md:h-8 text-brand' />
-					<span className='text-xl md:text-3xl font-highman tracking-wider text-brand'>
-						HERCULES GYM
-					</span>
-				</Link>
+// Memoized navigation links
+const NavigationLinks = memo(() => (
+	<>
+		<Link
+			href='/'
+			className='text-white/90 hover:text-brand transition-colors'
+			prefetch={true}
+		>
+			HOME
+		</Link>
+		<Link
+			href='/about'
+			className='text-white/90 hover:text-brand transition-colors'
+			prefetch={true}
+		>
+			ABOUT
+		</Link>
+	</>
+));
 
-				{/* Desktop Navigation */}
-				<div className='hidden md:flex items-center space-x-8'>
+NavigationLinks.displayName = 'NavigationLinks';
+
+// Memoized program dropdown
+const ProgramsDropdown = memo(
+	({
+		isOpen,
+		onToggle,
+	}: {
+		isOpen: boolean;
+		onToggle: () => void;
+	}) => (
+		<div className='relative group'>
+			<button
+				onClick={onToggle}
+				className='text-white/90 hover:text-brand transition-colors flex items-center space-x-1'
+			>
+				<span>PROGRAMS</span>
+				<ChevronDown
+					className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+				/>
+			</button>
+
+			{/* Desktop Dropdown Menu */}
+			<div className='absolute top-full left-0 mt-2 w-48 bg-gray-900/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50'>
+				<div className='py-2'>
+					<Link
+						href='/programs'
+						className='block px-4 py-2 text-white/90 hover:text-brand hover:bg-white/5 transition-colors'
+						prefetch={true}
+					>
+						All Programs
+					</Link>
+					{programSubpages.map((program) => (
+						<Link
+							key={program.href}
+							href={program.href}
+							className='block px-4 py-2 text-white/90 hover:text-brand hover:bg-white/5 transition-colors'
+							prefetch={true}
+						>
+							{program.name}
+						</Link>
+					))}
+				</div>
+			</div>
+		</div>
+	)
+);
+
+ProgramsDropdown.displayName = 'ProgramsDropdown';
+
+// Memoized mobile menu
+const MobileMenu = memo(
+	({
+		isOpen,
+		onClose,
+	}: {
+		isOpen: boolean;
+		onClose: () => void;
+	}) => (
+		<div
+			className={`fixed inset-0 bg-black/80 backdrop-blur-xl z-50 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+		>
+			<div className='flex flex-col h-full'>
+				<div className='flex items-center justify-between p-6 border-b border-white/10'>
 					<Link
 						href='/'
+						className='flex items-center space-x-2'
+						onClick={onClose}
+					>
+						<Dumbbell className='w-8 h-8 text-brand' />
+						<span className='text-xl font-bold text-white'>
+							Hercules Gym
+						</span>
+					</Link>
+					<button
+						onClick={onClose}
 						className='text-white/90 hover:text-brand transition-colors'
+					>
+						<X className='w-6 h-6' />
+					</button>
+				</div>
+				<nav className='flex-1 p-6 space-y-6'>
+					<Link
+						href='/'
+						className='block text-white/90 hover:text-brand transition-colors text-lg'
+						onClick={onClose}
 					>
 						HOME
 					</Link>
 					<Link
 						href='/about'
-						className='text-white/90 hover:text-brand transition-colors'
+						className='block text-white/90 hover:text-brand transition-colors text-lg'
+						onClick={onClose}
 					>
 						ABOUT
 					</Link>
+					<div className='space-y-2'>
+						<span className='block text-white/90 text-lg font-medium'>
+							PROGRAMS
+						</span>
+						{programSubpages.map((program) => (
+							<Link
+								key={program.href}
+								href={program.href}
+								className='block text-white/70 hover:text-brand transition-colors ml-4'
+								onClick={onClose}
+							>
+								{program.name}
+							</Link>
+						))}
+					</div>
+				</nav>
+			</div>
+		</div>
+	)
+);
+
+MobileMenu.displayName = 'MobileMenu';
+
+const Navbar = memo(() => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isProgramsOpen, setIsProgramsOpen] =
+		useState(false);
+
+	const toggleMenu = useCallback(() => {
+		setIsMenuOpen((prev) => !prev);
+	}, []);
+
+	const togglePrograms = useCallback(() => {
+		setIsProgramsOpen((prev) => !prev);
+	}, []);
+
+	const closeMenu = useCallback(() => {
+		setIsMenuOpen(false);
+	}, []);
+
+	return (
+		<header className='fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/10'>
+			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+				<div className='flex items-center justify-between h-16'>
+					{/* Logo */}
 					<Link
-						href='/programs'
-						className='text-white/90 hover:text-brand transition-colors group relative'
+						href='/'
+						className='flex items-center space-x-2'
 					>
-						PROGRAMS
-						<span className='inline-block ml-1 transition-transform group-hover:rotate-180'>
-							▼
+						<Dumbbell className='w-8 h-8 text-brand' />
+						<span className='text-xl font-bold text-white'>
+							Hercules Gym
 						</span>
 					</Link>
-					<Link
-						href='/pricing'
-						className='text-white/90 hover:text-brand transition-colors'
-					>
-						PRICING
-					</Link>
-					<Link
-						href='/blog'
-						className='text-white/90 hover:text-brand transition-colors'
-					>
-						BLOG
-					</Link>
-				</div>
 
-				{/* Desktop CTA Buttons */}
-				<div className='hidden md:flex items-center space-x-4'>
-					<Link href='/login'>
-						<Button
-							variant='outline'
-							className='rounded-lg border-white text-white bg-transparent hover:bg-transparent transition-colors'
+					{/* Desktop Navigation */}
+					<nav className='hidden md:flex items-center space-x-8'>
+						<NavigationLinks />
+						<ProgramsDropdown
+							isOpen={isProgramsOpen}
+							onToggle={togglePrograms}
+						/>
+						<Link
+							href='/pricing'
+							className='text-white/90 hover:text-brand transition-colors'
+							prefetch={true}
 						>
-							Login
-						</Button>
-					</Link>
-					<Link href='/get-started'>
-						<Button className='rounded-lg bg-brand text-black hover:bg-brand/80 transition-colors'>
-							Signup
-						</Button>
-					</Link>
-				</div>
+							PRICING
+						</Link>
+						<Link
+							href='/coaches'
+							className='text-white/90 hover:text-brand transition-colors'
+							prefetch={true}
+						>
+							COACHES
+						</Link>
+						<Link
+							href='/blog'
+							className='text-white/90 hover:text-brand transition-colors'
+							prefetch={true}
+						>
+							BLOG
+						</Link>
+					</nav>
 
-				{/* Mobile Menu Button */}
-				<button
-					onClick={() =>
-						setIsMenuOpen(!isMenuOpen)
-					}
-					className='md:hidden text-white/90 hover:text-brand transition-colors p-2'
-				>
-					{isMenuOpen ? (
-						<X className='w-6 h-6' />
-					) : (
-						<Menu className='w-6 h-6' />
-					)}
-				</button>
-
-				{/* Mobile Menu */}
-				{isMenuOpen && (
-					<div className='absolute top-full left-0 right-0 mt-2 p-4 bg-gray-900/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-lg md:hidden'>
-						<div className='flex flex-col space-y-4'>
-							<Link
-								href='/'
-								className='text-white/90 hover:text-brand transition-colors py-2 px-4 rounded-lg hover:bg-white/5'
-								onClick={() =>
-									setIsMenuOpen(false)
-								}
+					{/* CTA Buttons */}
+					<div className='hidden md:flex items-center space-x-4'>
+						<Link href='/login' prefetch={true}>
+							<Button
+								variant='ghost'
+								className='text-white/90 hover:text-brand hover:bg-white/5'
 							>
-								HOME
-							</Link>
-							<Link
-								href='/about'
-								className='text-white/90 hover:text-brand transition-colors py-2 px-4 rounded-lg hover:bg-white/5'
-								onClick={() =>
-									setIsMenuOpen(false)
-								}
-							>
-								ABOUT
-							</Link>
-							<Link
-								href='/programs'
-								className='text-white/90 hover:text-brand transition-colors py-2 px-4 rounded-lg hover:bg-white/5'
-								onClick={() =>
-									setIsMenuOpen(false)
-								}
-							>
-								PROGRAMS
-							</Link>
-							<Link
-								href='/pricing'
-								className='text-white/90 hover:text-brand transition-colors py-2 px-4 rounded-lg hover:bg-white/5'
-								onClick={() =>
-									setIsMenuOpen(false)
-								}
-							>
-								PRICING
-							</Link>
-							<Link
-								href='/blog'
-								className='text-white/90 hover:text-brand transition-colors py-2 px-4 rounded-lg hover:bg-white/5'
-								onClick={() =>
-									setIsMenuOpen(false)
-								}
-							>
-								BLOG
-							</Link>
-							<div className='pt-4 flex flex-col space-y-3'>
-								<Link href='/login'>
-									<Button
-										variant='outline'
-										className='w-full rounded-lg border-white text-white bg-transparent hover:bg-transparent transition-colors'
-									>
-										Login
-									</Button>
-								</Link>
-								<Link href='/get-started'>
-									<Button className='w-full rounded-lg bg-brand text-black hover:bg-brand/80 transition-colors'>
-										Signup
-									</Button>
-								</Link>
-							</div>
-						</div>
+								LOGIN
+							</Button>
+						</Link>
+						<Link
+							href='/get-started'
+							prefetch={true}
+						>
+							<Button className='bg-brand hover:bg-brand/90 text-white'>
+								GET STARTED
+							</Button>
+						</Link>
 					</div>
-				)}
-			</nav>
+
+					{/* Mobile Menu Button */}
+					<button
+						onClick={toggleMenu}
+						className='md:hidden text-white/90 hover:text-brand transition-colors'
+					>
+						<Menu className='w-6 h-6' />
+					</button>
+				</div>
+			</div>
+
+			{/* Mobile Menu */}
+			{isMenuOpen && (
+				<MobileMenu
+					isOpen={isMenuOpen}
+					onClose={closeMenu}
+				/>
+			)}
 		</header>
 	);
-}
+});
+
+Navbar.displayName = 'Navbar';
+
+export default Navbar;

@@ -11,6 +11,7 @@ import CTASection from '@/components/landing/CTASection';
 import BlogSection from '@/components/landing/BlogSection';
 import InstagramSection from '@/components/landing/InstagramSection';
 import NewsletterSection from '@/components/landing/NewsletterSection';
+import ScrollToTop from '@/components/ui/scroll-to-top';
 import Template from '@/components/layout/Template';
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
 				<BlogSection />
 				<InstagramSection />
 				<NewsletterSection />
+				<ScrollToTop />
 			</div>
 		</Template>
 	);

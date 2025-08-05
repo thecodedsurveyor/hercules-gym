@@ -18,101 +18,151 @@ import {
 const plans = [
 	{
 		name: 'BASIC',
-		price: '2999',
+		price: 45000,
 		duration: 'month',
 		description:
 			'Perfect for beginners starting their fitness journey',
 		features: [
 			{
-				text: 'Access to gym facilities',
+				text: '1-2 Personal Training Sessions/Week',
 				included: true,
 			},
 			{
-				text: 'Basic workout equipment',
+				text: 'Basic Workout Plans',
 				included: true,
 			},
-			{ text: 'Locker room access', included: true },
+			{ text: 'Monthly Check-ins', included: true },
 			{
-				text: '2 group classes per week',
+				text: 'Community Support',
 				included: true,
 			},
-			{ text: 'Fitness assessment', included: true },
+			{ text: 'Gym Access', included: true },
 			{
-				text: 'Personal training sessions',
+				text: 'Custom Nutrition Coaching',
 				included: false,
 			},
 			{
-				text: 'Nutrition consultation',
+				text: 'Recovery & Mobility Sessions',
 				included: false,
 			},
 			{
-				text: 'Recovery zone access',
+				text: '24/7 Messaging Support',
 				included: false,
 			},
 		],
 		popular: false,
 	},
 	{
-		name: 'PRO',
-		price: '4999',
+		name: 'ADVANCED',
+		price: 65000,
 		duration: 'month',
 		description:
 			'Most popular choice for dedicated fitness enthusiasts',
 		features: [
 			{ text: 'All BASIC features', included: true },
 			{
-				text: 'Unlimited group classes',
+				text: '2-3 Personal Training Sessions/Week',
 				included: true,
 			},
 			{
-				text: '4 personal training sessions',
+				text: 'Basic Nutrition Guidance',
 				included: true,
 			},
 			{
-				text: 'Nutrition consultation',
+				text: 'Bi-weekly Progress Reviews',
 				included: true,
 			},
 			{
-				text: 'Recovery zone access',
+				text: 'Email Support',
 				included: true,
 			},
-			{ text: 'Mobile app premium', included: true },
 			{
-				text: 'Guest passes (2/month)',
+				text: 'Group Classes Access',
 				included: true,
 			},
-			{ text: '1-on-1 coaching', included: false },
+			{
+				text: 'Recovery & Mobility Sessions',
+				included: false,
+			},
+			{
+				text: '24/7 Messaging Support',
+				included: false,
+			},
 		],
 		popular: true,
 	},
 	{
-		name: 'ELITE',
-		price: '7999',
+		name: 'PREMIUM',
+		price: 85000,
 		duration: 'month',
 		description:
 			'Ultimate package for maximum results and luxury experience',
 		features: [
-			{ text: 'All PRO features', included: true },
 			{
-				text: '8 personal training sessions',
-				included: true,
-			},
-			{ text: '1-on-1 coaching', included: true },
-			{
-				text: 'Priority class booking',
+				text: 'All ADVANCED features',
 				included: true,
 			},
 			{
-				text: 'Customized meal plans',
+				text: '3-5 Personal Training Sessions/Week',
 				included: true,
 			},
 			{
-				text: 'Monthly body analysis',
+				text: 'Custom Nutrition Coaching',
 				included: true,
 			},
-			{ text: 'VIP locker service', included: true },
 			{
-				text: 'Unlimited guest passes',
+				text: 'Monthly Progress Reviews',
+				included: true,
+			},
+			{
+				text: '24/7 Messaging Support',
+				included: true,
+			},
+			{
+				text: 'Recovery & Mobility Sessions',
+				included: true,
+			},
+			{ text: 'Priority Booking', included: true },
+			{
+				text: 'VIP Locker Service',
+				included: true,
+			},
+		],
+		popular: false,
+	},
+	{
+		name: 'FAMILY PACKAGE',
+		price: 180000,
+		duration: 'month',
+		description:
+			'Comprehensive family fitness package for up to 4 members',
+		features: [
+			{
+				text: 'Up to 4 Family Members',
+				included: true,
+			},
+			{
+				text: 'Flexible Training Sessions',
+				included: true,
+			},
+			{
+				text: 'Family Nutrition Plans',
+				included: true,
+			},
+			{
+				text: 'Kids Fitness Programs',
+				included: true,
+			},
+			{
+				text: 'Priority Booking',
+				included: true,
+			},
+			{
+				text: 'All PREMIUM features',
+				included: true,
+			},
+			{
+				text: 'Family Progress Tracking',
 				included: true,
 			},
 		],
@@ -131,7 +181,7 @@ const faqs = [
 	},
 	{
 		question: 'Are there any joining fees?',
-		answer: 'We charge a one-time joining fee of ₹999 which includes your initial fitness assessment and induction.',
+		answer: 'We charge a one-time joining fee of ₦15,000 which includes your initial fitness assessment and induction.',
 	},
 	{
 		question: "What's your cancellation policy?",
@@ -211,7 +261,7 @@ export default function PricingPage() {
 			{/* Pricing Cards */}
 			<section className='py-12'>
 				<div className='container mx-auto px-4'>
-					<div className='grid md:grid-cols-3 gap-8'>
+					<div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
 						{plans.map((plan, index) => (
 							<motion.div
 								key={plan.name}
@@ -247,18 +297,16 @@ export default function PricingPage() {
 									</h3>
 									<div className='flex items-baseline justify-center gap-1'>
 										<span className='text-4xl font-bold'>
-											₹
+											₦
 										</span>
 										<span className='text-5xl font-bold'>
 											{billingCycle ===
 											'yearly'
 												? Math.round(
-														parseInt(
-															plan.price
-														) *
+														plan.price *
 															0.8
 													)
-												: plan.price}
+												: plan.price.toLocaleString()}
 										</span>
 										<span className='text-gray-400'>
 											/{plan.duration}
@@ -419,10 +467,11 @@ export default function PricingPage() {
 							</span>
 						</h2>
 						<p className='text-gray-300'>
-							Got questions? We've got
-							answers. If you can't find what
-							you're looking for, feel free to
-							contact our support team.
+							Got questions? We&apos;ve got
+							answers. If you can&apos;t find
+							what you&apos;re looking for,
+							feel free to contact our support
+							team.
 						</p>
 					</div>
 
@@ -475,12 +524,12 @@ export default function PricingPage() {
 						to a healthier, stronger you.
 					</p>
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-						<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-6 text-lg font-bold'>
+						<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 text-lg font-bold'>
 							Get Started Now
 						</Button>
 						<Button
 							variant='outline'
-							className='border-gray-700 hover:bg-gray-800 px-8 py-6 text-lg'
+							className='border-gray-700 hover:bg-gray-800 px-8 py-4 text-lg bg-gray-800'
 						>
 							Book a Tour
 						</Button>

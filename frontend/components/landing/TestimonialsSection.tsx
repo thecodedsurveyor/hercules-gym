@@ -22,18 +22,18 @@ const Testimonials = () => {
 
 	const testimonials: Testimonial[] = [
 		{
-			id: 'rohan',
-			name: 'ROHAN DESHMUKH',
+			id: 'adebayo',
+			name: 'ADEBAYO ADELEKE',
 			memberSince: 'Member since 2022',
 			avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=150',
 			title: 'LIFE-CHANGING EXPERIENCE!',
 			content:
-				"Before working with Rohan Deshmukh, I struggled to stay consistent. Now, I actually look forward to my workouts. I've lost 8 kg, built muscle, and feel more confident than ever.",
+				"Before working with Adebayo, I struggled to stay consistent. Now, I actually look forward to my workouts. I've lost 8 kg, built muscle, and feel more confident than ever.",
 			rating: 5,
 		},
 		{
-			id: 'kavya',
-			name: 'KAVYA VERMA',
+			id: 'chioma',
+			name: 'CHIOMA OKAFOR',
 			memberSince: 'Member since 2024',
 			avatar: 'https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=150',
 			title: 'PROFESSIONAL, KNOWLEDGEABLE',
@@ -42,8 +42,8 @@ const Testimonials = () => {
 			rating: 5,
 		},
 		{
-			id: 'arjun',
-			name: 'ARJUN SHARMA',
+			id: 'emeka',
+			name: 'EMEKA NWANKWO',
 			memberSince: 'Member since 2023',
 			avatar: 'https://images.pexels.com/photos/1547248/pexels-photo-1547248.jpeg?auto=compress&cs=tinysrgb&w=150',
 			title: 'INCREDIBLE TRANSFORMATION',
@@ -52,8 +52,8 @@ const Testimonials = () => {
 			rating: 5,
 		},
 		{
-			id: 'priya',
-			name: 'PRIYA SINGH',
+			id: 'fatima',
+			name: 'FATIMA AHMED',
 			memberSince: 'Member since 2023',
 			avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
 			title: 'AMAZING SUPPORT SYSTEM',
@@ -62,8 +62,8 @@ const Testimonials = () => {
 			rating: 5,
 		},
 		{
-			id: 'vikram',
-			name: 'VIKRAM PATEL',
+			id: 'kemi',
+			name: 'KEMI ADEBAYO',
 			memberSince: 'Member since 2022',
 			avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150',
 			title: 'EXCEEDED EXPECTATIONS',
@@ -394,10 +394,22 @@ const Testimonials = () => {
 							our next success story.
 						</p>
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-							<button className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<button
+								className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/get-started')
+								}
+							>
 								Start Your Journey
 							</button>
-							<button className='w-full sm:w-auto bg-transparent border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-6 md:px-8 py-3 rounded-full font-medium text-sm md:text-lg transition-all duration-200 hover:bg-gray-800/50'>
+							<button
+								className='w-full sm:w-auto bg-transparent border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-6 md:px-8 py-3 md:py-4 rounded-full font-medium text-sm md:text-lg transition-all duration-200 hover:bg-gray-800/50'
+								onClick={() =>
+									(window.location.href =
+										'/testimonials')
+								}
+							>
 								Read More Stories
 							</button>
 						</div>

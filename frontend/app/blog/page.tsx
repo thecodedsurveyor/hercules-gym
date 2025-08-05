@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState, useMemo } from 'react';
 import {
 	ChevronsRight,
 	Search,
@@ -101,13 +102,65 @@ const blogPosts = [
 		readTime: '9 min read',
 		featured: false,
 	},
+	{
+		id: 7,
+		title: 'Supplements Guide: What Actually Works for Muscle Building',
+		excerpt:
+			'A science-based review of the most effective supplements for muscle growth, strength, and performance enhancement.',
+		category: 'Supplements',
+		author: 'Dr. Alex Martinez',
+		authorRole: 'Sports Medicine Specialist',
+		authorImage:
+			'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+		image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		date: 'June 1, 2024',
+		readTime: '11 min read',
+		featured: false,
+	},
+	{
+		id: 8,
+		title: 'Building a Home Gym: Essential Equipment for Every Budget',
+		excerpt:
+			'Create an effective home workout space with the right equipment, from budget-friendly options to premium setups.',
+		category: 'Equipment',
+		author: 'Sarah Johnson',
+		authorRole: 'Fitness Equipment Expert',
+		authorImage:
+			'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+		image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+		date: 'May 30, 2024',
+		readTime: '14 min read',
+		featured: false,
+	},
 ];
 
 export default function BlogPage() {
-	const featuredPosts = blogPosts.filter(
+	const [searchQuery, setSearchQuery] = useState('');
+
+	// Filter posts based on search query
+	const filteredPosts = useMemo(() => {
+		if (!searchQuery.trim()) {
+			return blogPosts;
+		}
+
+		const query = searchQuery.toLowerCase();
+		return blogPosts.filter(
+			(post) =>
+				post.title.toLowerCase().includes(query) ||
+				post.excerpt
+					.toLowerCase()
+					.includes(query) ||
+				post.category
+					.toLowerCase()
+					.includes(query) ||
+				post.author.toLowerCase().includes(query)
+		);
+	}, [searchQuery]);
+
+	const featuredPosts = filteredPosts.filter(
 		(post) => post.featured
 	);
-	const regularPosts = blogPosts.filter(
+	const regularPosts = filteredPosts.filter(
 		(post) => !post.featured
 	);
 
@@ -139,13 +192,38 @@ export default function BlogPage() {
 							<Input
 								type='text'
 								placeholder='Search articles...'
-								className='bg-gray-900 border-gray-800 pl-12 pr-4 py-6 text-white placeholder:text-gray-500 rounded-full'
+								value={searchQuery}
+								onChange={(e) =>
+									setSearchQuery(
+										e.target.value
+									)
+								}
+								className='bg-gray-900 border-gray-800 pl-12 pr-4 py-6 text-white placeholder:text-gray-500 rounded-full focus:border-brand/50 focus:ring-brand/20'
 							/>
 							<Search className='absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5' />
 						</div>
 					</motion.div>
 				</div>
 			</section>
+
+			{/* Search Results Indicator */}
+			{searchQuery && (
+				<section className='py-4'>
+					<div className='container mx-auto px-4'>
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className='text-center'
+						>
+							<p className='text-gray-400'>
+								{filteredPosts.length === 0
+									? `No articles found for "${searchQuery}"`
+									: `Found ${filteredPosts.length} article${filteredPosts.length === 1 ? '' : 's'} for "${searchQuery}"`}
+							</p>
+						</motion.div>
+					</div>
+				</section>
+			)}
 
 			{/* Featured Posts */}
 			<section className='py-12'>
@@ -160,78 +238,92 @@ export default function BlogPage() {
 						</span>
 					</h2>
 					<div className='grid md:grid-cols-2 gap-8'>
-						{featuredPosts.map((post) => (
-							<motion.article
-								key={post.id}
-								initial={{
-									opacity: 0,
-									y: 20,
-								}}
-								animate={{
-									opacity: 1,
-									y: 0,
-								}}
-								className='group bg-gray-900 rounded-3xl overflow-hidden'
-							>
-								<div className='relative h-64'>
-									<Image
-										src={post.image}
-										alt={post.title}
-										fill
-										className='object-cover transition-transform duration-500 group-hover:scale-110'
-									/>
-									<div className='absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent'></div>
-									<div className='absolute top-4 left-4'>
-										<span className='bg-brand text-black px-3 py-1 rounded-full text-sm font-medium'>
-											{post.category}
-										</span>
-									</div>
-								</div>
-								<div className='p-6'>
-									<div className='flex items-center gap-4 mb-4'>
+						{featuredPosts.length > 0 ? (
+							featuredPosts.map((post) => (
+								<motion.article
+									key={post.id}
+									initial={{
+										opacity: 0,
+										y: 20,
+									}}
+									animate={{
+										opacity: 1,
+										y: 0,
+									}}
+									className='group bg-gray-900 rounded-3xl overflow-hidden'
+								>
+									<div className='relative h-64'>
 										<Image
-											src={
-												post.authorImage
-											}
-											alt={
-												post.author
-											}
-											width={40}
-											height={40}
-											className='rounded-full'
+											src={post.image}
+											alt={post.title}
+											fill
+											className='object-cover transition-transform duration-500 group-hover:scale-110'
 										/>
-										<div>
-											<h4 className='font-medium'>
+										<div className='absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent'></div>
+										<div className='absolute top-4 left-4'>
+											<span className='bg-brand text-black px-3 py-1 rounded-full text-sm font-medium'>
 												{
+													post.category
+												}
+											</span>
+										</div>
+									</div>
+									<div className='p-6'>
+										<div className='flex items-center gap-4 mb-4'>
+											<Image
+												src={
+													post.authorImage
+												}
+												alt={
 													post.author
 												}
-											</h4>
-											<p className='text-sm text-gray-400'>
+												width={40}
+												height={40}
+												className='rounded-full'
+											/>
+											<div>
+												<h4 className='font-medium'>
+													{
+														post.author
+													}
+												</h4>
+												<p className='text-sm text-gray-400'>
+													{
+														post.authorRole
+													}
+												</p>
+											</div>
+										</div>
+										<h3 className='text-xl font-bold mb-3'>
+											{post.title}
+										</h3>
+										<p className='text-gray-400 mb-4'>
+											{post.excerpt}
+										</p>
+										<div className='flex items-center justify-between'>
+											<div className='text-sm text-gray-400'>
+												{post.date}{' '}
+												·{' '}
 												{
-													post.authorRole
+													post.readTime
 												}
-											</p>
+											</div>
+											<Button className='bg-brand hover:bg-brand/80 text-black'>
+												Read More
+												<ChevronRight className='w-4 h-4 ml-2' />
+											</Button>
 										</div>
 									</div>
-									<h3 className='text-xl font-bold mb-3'>
-										{post.title}
-									</h3>
-									<p className='text-gray-400 mb-4'>
-										{post.excerpt}
-									</p>
-									<div className='flex items-center justify-between'>
-										<div className='text-sm text-gray-400'>
-											{post.date} ·{' '}
-											{post.readTime}
-										</div>
-										<Button className='bg-brand hover:bg-brand/80 text-black'>
-											Read More
-											<ChevronRight className='w-4 h-4 ml-2' />
-										</Button>
-									</div>
-								</div>
-							</motion.article>
-						))}
+								</motion.article>
+							))
+						) : (
+							<div className='col-span-2 text-center py-12'>
+								<p className='text-gray-400 text-lg'>
+									No featured articles
+									match your search.
+								</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</section>
@@ -243,109 +335,146 @@ export default function BlogPage() {
 						LATEST ARTICLES
 					</h2>
 					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-						{regularPosts.map((post) => (
-							<motion.article
-								key={post.id}
-								initial={{
-									opacity: 0,
-									y: 20,
-								}}
-								animate={{
-									opacity: 1,
-									y: 0,
-								}}
-								className='bg-gray-900 rounded-2xl overflow-hidden'
-							>
-								<div className='relative h-48'>
-									<Image
-										src={post.image}
-										alt={post.title}
-										fill
-										className='object-cover'
-									/>
-									<div className='absolute top-4 left-4'>
-										<span className='bg-brand text-black px-3 py-1 rounded-full text-sm font-medium'>
-											{post.category}
-										</span>
-									</div>
-								</div>
-								<div className='p-6'>
-									<div className='flex items-center gap-3 mb-3'>
+						{regularPosts.length > 0 ? (
+							regularPosts.map((post) => (
+								<motion.article
+									key={post.id}
+									initial={{
+										opacity: 0,
+										y: 20,
+									}}
+									animate={{
+										opacity: 1,
+										y: 0,
+									}}
+									className='bg-gray-900 rounded-2xl overflow-hidden'
+								>
+									<div className='relative h-48'>
 										<Image
-											src={
-												post.authorImage
-											}
-											alt={
-												post.author
-											}
-											width={32}
-											height={32}
-											className='rounded-full'
+											src={post.image}
+											alt={post.title}
+											fill
+											className='object-cover'
 										/>
-										<div className='text-sm'>
-											<span className='font-medium'>
+										<div className='absolute top-4 left-4'>
+											<span className='bg-brand text-black px-3 py-1 rounded-full text-sm font-medium'>
 												{
-													post.author
-												}
-											</span>
-											<span className='text-gray-400'>
-												{' '}
-												·{' '}
-												{
-													post.readTime
+													post.category
 												}
 											</span>
 										</div>
 									</div>
-									<h3 className='text-lg font-bold mb-2'>
-										{post.title}
-									</h3>
-									<p className='text-gray-400 text-sm mb-4 line-clamp-2'>
-										{post.excerpt}
-									</p>
-									<Button
-										variant='outline'
-										className='w-full border-gray-800 hover:bg-gray-800'
-									>
-										Read Article
-										<ChevronRight className='w-4 h-4 ml-2' />
-									</Button>
-								</div>
-							</motion.article>
-						))}
+									<div className='p-6'>
+										<div className='flex items-center gap-3 mb-3'>
+											<Image
+												src={
+													post.authorImage
+												}
+												alt={
+													post.author
+												}
+												width={32}
+												height={32}
+												className='rounded-full'
+											/>
+											<div className='text-sm'>
+												<span className='font-medium'>
+													{
+														post.author
+													}
+												</span>
+												<span className='text-gray-400'>
+													{' '}
+													·{' '}
+													{
+														post.readTime
+													}
+												</span>
+											</div>
+										</div>
+										<h3 className='text-lg font-bold mb-2'>
+											{post.title}
+										</h3>
+										<p className='text-gray-400 text-sm mb-4 line-clamp-2'>
+											{post.excerpt}
+										</p>
+										<Button className='w-full bg-brand hover:bg-brand/80 text-black'>
+											Read Article
+											<ChevronRight className='w-4 h-4 ml-2' />
+										</Button>
+									</div>
+								</motion.article>
+							))
+						) : (
+							<div className='col-span-3 text-center py-12'>
+								<p className='text-gray-400 text-lg'>
+									No articles match your
+									search criteria.
+								</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</section>
 
 			{/* Newsletter Section */}
-			<section className='py-12'>
+			<section className='py-16'>
 				<div className='container mx-auto px-4'>
-					<div className='bg-gray-900 rounded-3xl p-8 md:p-12'>
-						<div className='mx-auto text-center'>
-							<h2 className='text-2xl md:text-4xl font-bold mb-4'>
-								GET THE LATEST{' '}
-								<span className='text-brand'>
-									FITNESS INSIGHTS
-								</span>
-							</h2>
-							<p className='text-gray-400 mb-6'>
-								Subscribe to our newsletter
-								for expert tips, workout
-								guides, and nutrition advice
-								delivered straight to your
-								inbox.
-							</p>
-							<div className='flex flex-col sm:flex-row gap-4'>
-								<Input
-									type='email'
-									placeholder='Enter your email'
-									className='bg-black border-gray-800 text-white placeholder:text-gray-500'
-								/>
-								<Button className='bg-brand hover:bg-brand/80 text-black whitespace-nowrap'>
-									Subscribe Now
-								</Button>
+					<div className='max-w-2xl mx-auto'>
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8 }}
+							className='bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-800 shadow-xl'
+						>
+							<div className='text-center mb-6'>
+								<div className='inline-flex items-center justify-center w-16 h-16 bg-brand/20 rounded-full mb-4'>
+									<svg
+										className='w-8 h-8 text-brand'
+										fill='none'
+										stroke='currentColor'
+										viewBox='0 0 24 24'
+									>
+										<path
+											strokeLinecap='round'
+											strokeLinejoin='round'
+											strokeWidth={2}
+											d='M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+										/>
+									</svg>
+								</div>
+								<h2 className='text-2xl md:text-3xl font-bold mb-3'>
+									Stay Updated with{' '}
+									<span className='text-brand'>
+										Expert Insights
+									</span>
+								</h2>
+								<p className='text-gray-400 text-sm md:text-base leading-relaxed'>
+									Get weekly fitness tips,
+									workout guides, and
+									nutrition advice
+									delivered to your inbox.
+								</p>
 							</div>
-						</div>
+
+							<div className='space-y-4'>
+								<div className='flex flex-col sm:flex-row gap-3'>
+									<Input
+										type='email'
+										placeholder='Enter your email address'
+										className='flex-1 bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-brand/50 focus:ring-brand/20'
+									/>
+									<Button className='bg-brand hover:bg-brand/80 text-black font-medium px-6 py-2.5 whitespace-nowrap transition-all duration-200'>
+										Subscribe
+									</Button>
+								</div>
+								<p className='text-xs text-gray-500 text-center'>
+									No spam, unsubscribe at
+									any time. We respect
+									your privacy.
+								</p>
+							</div>
+						</motion.div>
 					</div>
 				</div>
 			</section>

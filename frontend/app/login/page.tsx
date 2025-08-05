@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import Footer from '@/components/landing/Footer';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { StreakPopup } from '@/components/ui/achievement-popup';
 
@@ -286,7 +285,6 @@ export default function LoginPage() {
 					</motion.div>
 				</div>
 			</main>
-			<Footer />
 
 			{/* Streak Achievement Popup */}
 			<StreakPopup

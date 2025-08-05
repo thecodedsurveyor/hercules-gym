@@ -1,48 +1,81 @@
 'use client';
 
 import { Instagram, ChevronsRight } from 'lucide-react';
+import { useCategoryImages } from '@/hooks/use-unsplash-images';
+import { UnsplashImageComponent } from '@/components/ui/unsplash-image';
 
 interface InstagramPost {
 	id: string;
 	caption: string;
 	likes: number;
 	comments: number;
+	imageCategory: string;
 }
 
 export default function InstagramSection() {
+	const {
+		images: weightLiftingImages,
+		loading: weightLiftingLoading,
+	} = useCategoryImages('WEIGHT_LIFTING', 1);
+	const { images: yogaImages, loading: yogaLoading } =
+		useCategoryImages('YOGA', 1);
+	const { images: cardioImages, loading: cardioLoading } =
+		useCategoryImages('CARDIO', 1);
+	const {
+		images: personalTrainingImages,
+		loading: personalTrainingLoading,
+	} = useCategoryImages('PERSONAL_TRAINING', 1);
+
 	const posts: InstagramPost[] = [
 		{
 			id: '1',
 			caption:
-				'Transform your body, transform your life 💪 #FitnessGoals #GymLife',
+				'Building strength, building confidence 💪 Every rep counts! #StrengthTraining #GymLife',
 			likes: 324,
 			comments: 18,
+			imageCategory: 'weightlifting',
 		},
 		{
 			id: '2',
 			caption:
-				'Morning workout motivation! Ready to crush it 🔥 #MorningWorkout',
+				'Finding balance in movement and mind 🧘‍♀️ #YogaFitness #MindBodyConnection',
 			likes: 456,
 			comments: 32,
+			imageCategory: 'yoga',
 		},
 		{
 			id: '3',
 			caption:
-				'New equipment just arrived! Come check it out 🎉 #GymEquipment',
+				'Cardio sessions that push your limits 🔥 #CardioWorkout #Endurance',
 			likes: 289,
 			comments: 24,
+			imageCategory: 'cardio',
 		},
 		{
 			id: '4',
 			caption:
-				'Weekend warrior mode activated 💯 #WeekendWorkout #FitFam',
+				'Personal training sessions that transform lives 💯 #PersonalTraining #Results',
 			likes: 567,
 			comments: 45,
+			imageCategory: 'personal',
 		},
 	];
 
+	// Combine all images and loading states
+	const allImages = [
+		weightLiftingImages[0],
+		yogaImages[0],
+		cardioImages[0],
+		personalTrainingImages[0],
+	];
+	const isLoading =
+		weightLiftingLoading ||
+		yogaLoading ||
+		cardioLoading ||
+		personalTrainingLoading;
+
 	return (
-		<section className='py-12 md:py-20 bg-black'>
+		<section className='py-12 md:py-20 bg-black px-4 sm:px-8'>
 			<div className='max-w-7xl mx-auto'>
 				{/* Header */}
 				<div className='mb-2 pl-0'>
@@ -70,43 +103,87 @@ export default function InstagramSection() {
 
 				{/* Instagram Grid */}
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6'>
-					{posts.map((post) => (
-						<div
-							key={post.id}
-							className='group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden p-6'
-						>
-							<div className='flex flex-col h-full'>
-								{/* Caption */}
-								<p className='text-white text-sm md:text-base mb-4 flex-grow'>
-									{post.caption}
-								</p>
+					{isLoading
+						? // Loading skeleton
+							Array.from({ length: 4 }).map(
+								(_, index) => (
+									<div
+										key={index}
+										className='group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden'
+									>
+										<div className='aspect-square bg-gray-700 animate-pulse'></div>
+										<div className='p-6'>
+											<div className='h-4 bg-gray-700 rounded animate-pulse mb-4'></div>
+											<div className='h-4 bg-gray-700 rounded animate-pulse mb-4 w-3/4'></div>
+											<div className='flex gap-4'>
+												<div className='h-4 bg-gray-700 rounded animate-pulse w-16'></div>
+												<div className='h-4 bg-gray-700 rounded animate-pulse w-16'></div>
+											</div>
+										</div>
+									</div>
+								)
+							)
+						: posts.map((post, index) => (
+								<div
+									key={post.id}
+									className='group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden'
+								>
+									{/* Image */}
+									{allImages[index] && (
+										<UnsplashImageComponent
+											image={
+												allImages[
+													index
+												]
+											}
+											className='w-full aspect-square object-cover'
+											showAttribution={
+												false
+											}
+										/>
+									)}
 
-								{/* Stats */}
-								<div className='flex items-center gap-4 text-white/90'>
-									<span className='flex items-center gap-1'>
-										<svg
-											className='w-5 h-5'
-											fill='currentColor'
-											viewBox='0 0 24 24'
-										>
-											<path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' />
-										</svg>
-										{post.likes}
-									</span>
-									<span className='flex items-center gap-1'>
-										<svg
-											className='w-5 h-5'
-											fill='currentColor'
-											viewBox='0 0 24 24'
-										>
-											<path d='M21 15a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10zm-4-5V5H9v2h6a2 2 0 0 1 2 2v1zm2 0h-2v2h2V9z' />
-										</svg>
-										{post.comments}
-									</span>
+									{/* Content */}
+									<div className='p-6'>
+										<div className='flex flex-col h-full'>
+											{/* Caption */}
+											<p className='text-white text-sm md:text-base mb-4 flex-grow'>
+												{
+													post.caption
+												}
+											</p>
+
+											{/* Stats */}
+											<div className='flex items-center gap-4 text-white/90'>
+												<span className='flex items-center gap-1'>
+													<svg
+														className='w-5 h-5'
+														fill='currentColor'
+														viewBox='0 0 24 24'
+													>
+														<path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' />
+													</svg>
+													{
+														post.likes
+													}
+												</span>
+												<span className='flex items-center gap-1'>
+													<svg
+														className='w-5 h-5'
+														fill='currentColor'
+														viewBox='0 0 24 24'
+													>
+														<path d='M21 15a2 2 0 0 1-2 2h-2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10zm-4-5V5H9v2h6a2 2 0 0 1 2 2v1zm2 0h-2v2h2V9z' />
+													</svg>
+													{
+														post.comments
+													}
+												</span>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					))}
+							))}
 				</div>
 
 				{/* Call to Action */}

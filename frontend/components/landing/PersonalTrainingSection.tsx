@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const PersonalTraining = () => {
 	return (
-		<section className='bg-gradient-to-br from-gray-900 via-gray-800 to-black py-12 md:py-20 px-4 sm:px-6 lg:px-8'>
+		<section className='bg-gradient-to-br from-gray-900 via-gray-800 to-black py-12 md:py-20 px-4 sm:px-8 lg:px-8'>
 			<div className='max-w-7xl mx-auto'>
 				<div className='grid lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
 					{/* Left Content */}
@@ -32,7 +32,13 @@ const PersonalTraining = () => {
 								training session, free of
 								charge.
 							</p>
-							<button className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<button
+								className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+								onClick={() =>
+									(window.location.href =
+										'/get-started')
+								}
+							>
 								Sign Up
 							</button>
 						</div>
@@ -65,7 +71,13 @@ const PersonalTraining = () => {
 									your needs and fitness
 									level.
 								</p>
-								<button className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+								<button
+									className='w-full sm:w-auto bg-brand hover:bg-brand/80 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'
+									onClick={() =>
+										(window.location.href =
+											'/get-started')
+									}
+								>
 									Explore More
 								</button>
 							</div>

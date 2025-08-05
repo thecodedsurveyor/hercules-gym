@@ -98,7 +98,6 @@ interface DashboardData {
 		currentStreak: number;
 		weeklyWorkoutGoal?: number;
 		fitnessGoals?: string[];
-		primaryGoal?: string;
 		fitnessLevel?: string;
 		dietaryPreferences?: string[];
 		longestStreak?: number;
@@ -132,43 +131,29 @@ interface WeeklyChallengeProgress {
 	};
 }
 
-// Query Keys
-export const dashboardKeys = {
-	all: ['dashboard'] as const,
-	user: (userId: string) =>
-		[...dashboardKeys.all, 'user', userId] as const,
-	stats: (userId: string) =>
-		[...dashboardKeys.all, 'stats', userId] as const,
-	aiContent: (userId: string) =>
-		[
-			...dashboardKeys.all,
-			'ai-content',
-			userId,
-		] as const,
-	achievements: (userId: string) =>
-		[
-			...dashboardKeys.all,
-			'achievements',
-			userId,
-		] as const,
-	challenges: () =>
-		[...dashboardKeys.all, 'challenges'] as const,
-	leaderboard: () =>
-		[...dashboardKeys.all, 'leaderboard'] as const,
-	weeklyProgress: (userId: string) =>
-		[
-			...dashboardKeys.all,
-			'weekly-progress',
-			userId,
-		] as const,
+// Query keys for better cache management
+const queryKeys = {
+	dashboard: (userId: string) => ['dashboard', userId],
+	aiContent: (userId: string) => ['aiContent', userId],
+	userStats: (userId: string) => ['userStats', userId],
+	achievements: (userId: string) => [
+		'achievements',
+		userId,
+	],
+	challenges: () => ['challenges'],
+	leaderboard: () => ['leaderboard'],
+	weeklyProgress: (userId: string) => [
+		'weeklyProgress',
+		userId,
+	],
 };
 
-// API Functions
+// Optimized fetch functions with error handling
 async function fetchDashboardData(
 	userId: string
 ): Promise<DashboardData> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/user-data/${userId}`
+		`${API_BASE}/api/dashboard/${userId}`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch dashboard data');
@@ -180,7 +165,7 @@ async function fetchAIContent(
 	userId: string
 ): Promise<AIContent> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/ai-content/${userId}`
+		`${API_BASE}/api/ai-content/${userId}`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch AI content');
@@ -192,7 +177,7 @@ async function fetchUserStats(
 	userId: string
 ): Promise<UserStats> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/stats/${userId}`
+		`${API_BASE}/api/user-stats/${userId}`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch user stats');
@@ -204,7 +189,7 @@ async function fetchAchievements(
 	userId: string
 ): Promise<Achievement[]> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/achievements/${userId}`
+		`${API_BASE}/api/achievements/${userId}`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch achievements');
@@ -214,7 +199,7 @@ async function fetchAchievements(
 
 async function fetchChallenges(): Promise<Challenge[]> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/challenges`
+		`${API_BASE}/api/challenges`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch challenges');
@@ -224,7 +209,7 @@ async function fetchChallenges(): Promise<Challenge[]> {
 
 async function fetchLeaderboard() {
 	const response = await fetch(
-		`${API_BASE}/dashboard/leaderboard`
+		`${API_BASE}/api/leaderboard`
 	);
 	if (!response.ok) {
 		throw new Error('Failed to fetch leaderboard');
@@ -236,12 +221,10 @@ async function fetchWeeklyChallengeProgress(
 	userId: string
 ): Promise<WeeklyChallengeProgress> {
 	const response = await fetch(
-		`${API_BASE}/dashboard/weekly-challenge-progress/${userId}`
+		`${API_BASE}/api/weekly-progress/${userId}`
 	);
 	if (!response.ok) {
-		throw new Error(
-			'Failed to fetch weekly challenge progress'
-		);
+		throw new Error('Failed to fetch weekly progress');
 	}
 	return response.json();
 }
@@ -252,7 +235,7 @@ async function joinChallenge(data: {
 	challengeType: 'daily' | 'weekly';
 }) {
 	const response = await fetch(
-		`${API_BASE}/dashboard/join-challenge`,
+		`${API_BASE}/api/challenges/join`,
 		{
 			method: 'POST',
 			headers: {
@@ -263,10 +246,7 @@ async function joinChallenge(data: {
 	);
 
 	if (!response.ok) {
-		const error = await response.text();
-		throw new Error(
-			error || 'Failed to join challenge'
-		);
+		throw new Error('Failed to join challenge');
 	}
 
 	return response.json();
@@ -277,7 +257,7 @@ async function completeChallenge(data: {
 	challengeEntryId: string;
 }) {
 	const response = await fetch(
-		`${API_BASE}/dashboard/complete-challenge`,
+		`${API_BASE}/api/challenges/complete`,
 		{
 			method: 'POST',
 			headers: {
@@ -288,10 +268,7 @@ async function completeChallenge(data: {
 	);
 
 	if (!response.ok) {
-		const error = await response.text();
-		throw new Error(
-			error || 'Failed to complete challenge'
-		);
+		throw new Error('Failed to complete challenge');
 	}
 
 	return response.json();
@@ -299,7 +276,7 @@ async function completeChallenge(data: {
 
 async function logWorkout(workoutData: any) {
 	const response = await fetch(
-		`${API_BASE}/dashboard/log-workout`,
+		`${API_BASE}/api/workouts/log`,
 		{
 			method: 'POST',
 			headers: {
@@ -318,7 +295,7 @@ async function logWorkout(workoutData: any) {
 
 async function logMeal(mealData: any) {
 	const response = await fetch(
-		`${API_BASE}/dashboard/log-meal`,
+		`${API_BASE}/api/meals/log`,
 		{
 			method: 'POST',
 			headers: {
@@ -335,104 +312,120 @@ async function logMeal(mealData: any) {
 	return response.json();
 }
 
-// React Query Hooks
+// Optimized React Query Hooks with better caching
 export function useDashboardData(userId: string) {
 	return useQuery({
-		queryKey: dashboardKeys.user(userId),
+		queryKey: queryKeys.dashboard(userId),
 		queryFn: () => fetchDashboardData(userId),
 		enabled: !!userId,
-		staleTime: 1000 * 60 * 2, // 2 minutes
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		gcTime: 1000 * 60 * 30, // 30 minutes (formerly cacheTime)
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
+		retry: 3,
+		retryDelay: (attemptIndex) =>
+			Math.min(1000 * 2 ** attemptIndex, 30000),
 	});
 }
 
 export function useAIContent(userId: string) {
 	return useQuery({
-		queryKey: dashboardKeys.aiContent(userId),
+		queryKey: queryKeys.aiContent(userId),
 		queryFn: () => fetchAIContent(userId),
 		enabled: !!userId,
-		staleTime: 1000 * 60 * 10, // 10 minutes (AI content doesn't change often)
+		staleTime: 1000 * 60 * 10, // 10 minutes
+		gcTime: 1000 * 60 * 60, // 1 hour
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
+		retry: 2,
 	});
 }
 
 export function useUserStats(userId: string) {
 	return useQuery({
-		queryKey: dashboardKeys.stats(userId),
+		queryKey: queryKeys.userStats(userId),
 		queryFn: () => fetchUserStats(userId),
 		enabled: !!userId,
-		staleTime: 1000 * 60 * 1, // 1 minute
+		staleTime: 1000 * 60 * 2, // 2 minutes
+		gcTime: 1000 * 60 * 15, // 15 minutes
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
 	});
 }
 
 export function useAchievements(userId: string) {
 	return useQuery({
-		queryKey: dashboardKeys.achievements(userId),
+		queryKey: queryKeys.achievements(userId),
 		queryFn: () => fetchAchievements(userId),
 		enabled: !!userId,
-		staleTime: 1000 * 60 * 5, // 5 minutes
+		staleTime: 1000 * 60 * 30, // 30 minutes
+		gcTime: 1000 * 60 * 60 * 2, // 2 hours
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
 	});
 }
 
 export function useChallenges() {
 	return useQuery({
-		queryKey: dashboardKeys.challenges(),
+		queryKey: queryKeys.challenges(),
 		queryFn: fetchChallenges,
-		staleTime: 1000 * 60 * 5, // 5 minutes
+		staleTime: 1000 * 60 * 15, // 15 minutes
+		gcTime: 1000 * 60 * 60, // 1 hour
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
 	});
 }
 
 export function useLeaderboard() {
 	return useQuery({
-		queryKey: dashboardKeys.leaderboard(),
+		queryKey: queryKeys.leaderboard(),
 		queryFn: fetchLeaderboard,
-		staleTime: 1000 * 60 * 2, // 2 minutes
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		gcTime: 1000 * 60 * 30, // 30 minutes
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
 	});
 }
 
 export function useWeeklyChallengeProgress(userId: string) {
 	return useQuery({
-		queryKey: dashboardKeys.weeklyProgress(userId),
+		queryKey: queryKeys.weeklyProgress(userId),
 		queryFn: () => fetchWeeklyChallengeProgress(userId),
 		enabled: !!userId,
-		staleTime: 1000 * 60 * 1, // 1 minute
+		staleTime: 1000 * 60 * 2, // 2 minutes
+		gcTime: 1000 * 60 * 15, // 15 minutes
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: true,
 	});
 }
 
-// Mutation Hooks
 export function useJoinChallenge() {
 	const queryClient = useQueryClient();
 
 	return useMutation({
 		mutationFn: joinChallenge,
-		onSuccess: (_, variables) => {
-			toast.success(
-				'Challenge joined successfully!',
-				{
-					description:
-						'You can now start tracking your progress.',
-				}
-			);
+		onSuccess: (data, variables) => {
+			// Invalidate and refetch related queries
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.challenges(),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.weeklyProgress(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.dashboard(
+					variables.userId
+				),
+			});
 
-			// Invalidate related queries
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.challenges(),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.user(
-					variables.userId
-				),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.weeklyProgress(
-					variables.userId
-				),
-			});
+			toast.success('Successfully joined challenge!');
 		},
-		onError: (error: Error) => {
-			toast.error('Failed to join challenge', {
-				description:
-					error.message ||
-					'Please try again later.',
-			});
+		onError: (error) => {
+			toast.error(
+				error.message || 'Failed to join challenge'
+			);
 		},
 	});
 }
@@ -443,44 +436,33 @@ export function useCompleteChallenge() {
 	return useMutation({
 		mutationFn: completeChallenge,
 		onSuccess: (data, variables) => {
-			toast.success('Challenge completed!', {
-				description: `You earned ${data.pointsEarned || 0} points! 🎉`,
+			// Invalidate and refetch related queries
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.challenges(),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.weeklyProgress(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.dashboard(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.achievements(
+					variables.userId
+				),
 			});
 
-			// Invalidate related queries
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.challenges(),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.user(
-					variables.userId
-				),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.stats(
-					variables.userId
-				),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.achievements(
-					variables.userId
-				),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.leaderboard(),
-			});
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.weeklyProgress(
-					variables.userId
-				),
-			});
+			toast.success('Challenge completed!');
 		},
-		onError: (error: Error) => {
-			toast.error('Failed to complete challenge', {
-				description:
-					error.message ||
-					'Please try again later.',
-			});
+		onError: (error) => {
+			toast.error(
+				error.message ||
+					'Failed to complete challenge'
+			);
 		},
 	});
 }
@@ -490,23 +472,30 @@ export function useLogWorkout() {
 
 	return useMutation({
 		mutationFn: logWorkout,
-		onSuccess: (_, variables) => {
-			toast.success('Workout logged successfully!', {
-				description:
-					'Your progress has been updated.',
+		onSuccess: (data, variables) => {
+			// Invalidate and refetch related queries
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.dashboard(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.userStats(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.weeklyProgress(
+					variables.userId
+				),
 			});
 
-			// Invalidate related queries
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.all,
-			});
+			toast.success('Workout logged successfully!');
 		},
-		onError: (error: Error) => {
-			toast.error('Failed to log workout', {
-				description:
-					error.message ||
-					'Please try again later.',
-			});
+		onError: (error) => {
+			toast.error(
+				error.message || 'Failed to log workout'
+			);
 		},
 	});
 }
@@ -516,23 +505,25 @@ export function useLogMeal() {
 
 	return useMutation({
 		mutationFn: logMeal,
-		onSuccess: () => {
-			toast.success('Meal logged successfully!', {
-				description:
-					'Your nutrition tracking has been updated.',
+		onSuccess: (data, variables) => {
+			// Invalidate and refetch related queries
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.dashboard(
+					variables.userId
+				),
+			});
+			queryClient.invalidateQueries({
+				queryKey: queryKeys.userStats(
+					variables.userId
+				),
 			});
 
-			// Invalidate related queries
-			queryClient.invalidateQueries({
-				queryKey: dashboardKeys.all,
-			});
+			toast.success('Meal logged successfully!');
 		},
-		onError: (error: Error) => {
-			toast.error('Failed to log meal', {
-				description:
-					error.message ||
-					'Please try again later.',
-			});
+		onError: (error) => {
+			toast.error(
+				error.message || 'Failed to log meal'
+			);
 		},
 	});
 }
