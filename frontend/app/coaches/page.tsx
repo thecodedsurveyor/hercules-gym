@@ -13,7 +13,6 @@ interface Coach {
 	name: string;
 	title: string;
 	image: string;
-	specialties: string[];
 	experience: string;
 	rating: number;
 	clients: number;
@@ -28,12 +27,6 @@ const coaches: Coach[] = [
 		name: 'Marcus Johnson',
 		title: 'Head Strength Coach',
 		image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Strength Training',
-			'Powerlifting',
-			'Muscle Building',
-			'Athletic Performance',
-		],
 		experience: '8+ years',
 		rating: 5,
 		clients: 150,
@@ -50,12 +43,6 @@ const coaches: Coach[] = [
 		name: 'Sarah Chen',
 		title: 'Cardio & HIIT Specialist',
 		image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Cardio Training',
-			'HIIT Workouts',
-			'Weight Loss',
-			'Endurance Building',
-		],
 		experience: '6+ years',
 		rating: 5,
 		clients: 120,
@@ -72,12 +59,6 @@ const coaches: Coach[] = [
 		name: 'David Rodriguez',
 		title: 'Bodybuilding Expert',
 		image: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Bodybuilding',
-			'Muscle Hypertrophy',
-			'Competition Prep',
-			'Nutrition Planning',
-		],
 		experience: '10+ years',
 		rating: 5,
 		clients: 200,
@@ -94,12 +75,6 @@ const coaches: Coach[] = [
 		name: 'Emily Thompson',
 		title: 'Functional Fitness Coach',
 		image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Functional Training',
-			'Mobility Work',
-			'Injury Prevention',
-			'Rehabilitation',
-		],
 		experience: '7+ years',
 		rating: 5,
 		clients: 180,
@@ -111,119 +86,12 @@ const coaches: Coach[] = [
 		],
 		availability: 'Mon-Fri: 8AM-6PM, Sat: 9AM-3PM',
 	},
-	{
-		id: '5',
-		name: 'Alex Kim',
-		title: 'CrossFit & Olympic Lifting Coach',
-		image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'CrossFit',
-			'Olympic Lifting',
-			'Gymnastics',
-			'Competition Training',
-		],
-		experience: '9+ years',
-		rating: 5,
-		clients: 160,
-		bio: 'Alex is a CrossFit Level 2 trainer and Olympic lifting specialist. His coaching helps athletes develop strength, power, and technical proficiency in complex movements.',
-		achievements: [
-			'CrossFit Level 2 Trainer',
-			'USA Weightlifting Coach',
-			'Former Competitive Athlete',
-		],
-		availability: 'Mon-Sat: 6AM-8PM',
-	},
-	{
-		id: '6',
-		name: 'Lisa Wang',
-		title: 'Yoga & Wellness Coach',
-		image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Yoga',
-			'Mindfulness',
-			'Stress Management',
-			'Recovery',
-		],
-		experience: '5+ years',
-		rating: 5,
-		clients: 90,
-		bio: 'Lisa combines traditional yoga practices with modern fitness principles to create holistic wellness programs. Her approach emphasizes mental and physical balance.',
-		achievements: [
-			'RYT-500 Yoga Teacher',
-			'Meditation Instructor',
-			'Wellness Coach',
-		],
-		availability: 'Mon-Sun: 7AM-9PM',
-	},
-	{
-		id: '7',
-		name: 'Mike Wilson',
-		title: 'Senior Fitness Specialist',
-		image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Senior Fitness',
-			'Balance Training',
-			'Joint Health',
-			'Low-Impact Exercise',
-		],
-		experience: '12+ years',
-		rating: 5,
-		clients: 110,
-		bio: 'Mike specializes in helping older adults maintain strength, mobility, and independence through age-appropriate exercise programs. His gentle approach makes fitness accessible to everyone.',
-		achievements: [
-			'Senior Fitness Specialist',
-			'Balance & Fall Prevention Expert',
-			'Geriatric Exercise Specialist',
-		],
-		availability: 'Mon-Fri: 9AM-5PM, Sat: 10AM-2PM',
-	},
-	{
-		id: '8',
-		name: 'Jessica Martinez',
-		title: 'Prenatal & Postnatal Coach',
-		image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-		specialties: [
-			'Prenatal Fitness',
-			'Postnatal Recovery',
-			'Core Rehabilitation',
-			'Pelvic Health',
-		],
-		experience: '6+ years',
-		rating: 5,
-		clients: 85,
-		bio: 'Jessica is certified in prenatal and postnatal fitness, helping mothers stay strong and healthy throughout pregnancy and recover safely after childbirth.',
-		achievements: [
-			'Prenatal Fitness Specialist',
-			'Postnatal Recovery Expert',
-			'Pelvic Floor Specialist',
-		],
-		availability: 'Mon-Fri: 8AM-6PM, Sat: 9AM-1PM',
-	},
 ];
 
 export default function CoachesPage() {
 	const [selectedCoach, setSelectedCoach] = useState<
 		string | null
 	>(null);
-	const [filterSpecialty, setFilterSpecialty] =
-		useState<string>('all');
-
-	const specialties = [
-		'all',
-		...Array.from(
-			new Set(
-				coaches.flatMap(
-					(coach) => coach.specialties
-				)
-			)
-		),
-	];
-
-	const filteredCoaches = coaches.filter(
-		(coach) =>
-			filterSpecialty === 'all' ||
-			coach.specialties.includes(filterSpecialty)
-	);
 
 	return (
 		<div className='min-h-screen bg-black'>
@@ -249,39 +117,11 @@ export default function CoachesPage() {
 				</div>
 			</section>
 
-			{/* Filter Section */}
-			<section className='py-8 bg-black border-b border-gray-800'>
-				<div className='container mx-auto px-4 md:px-6'>
-					<div className='flex flex-wrap gap-3 justify-center'>
-						{specialties.map((specialty) => (
-							<button
-								key={specialty}
-								onClick={() =>
-									setFilterSpecialty(
-										specialty
-									)
-								}
-								className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-									filterSpecialty ===
-									specialty
-										? 'bg-brand text-black'
-										: 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-								}`}
-							>
-								{specialty === 'all'
-									? 'All Specialties'
-									: specialty}
-							</button>
-						))}
-					</div>
-				</div>
-			</section>
-
 			{/* Coaches Grid */}
 			<section className='py-16 md:py-24 bg-black'>
 				<div className='container mx-auto px-4 md:px-6'>
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8'>
-						{filteredCoaches.map((coach) => (
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8'>
+						{coaches.map((coach) => (
 							<div
 								key={coach.id}
 								className='bg-gray-900 border border-gray-700 rounded-2xl overflow-hidden hover:border-brand/50 transition-all duration-300 transform hover:scale-105'
@@ -349,40 +189,6 @@ export default function CoachesPage() {
 										</span>
 									</div>
 
-									{/* Specialties */}
-									<div className='flex flex-wrap gap-2 mb-4'>
-										{coach.specialties
-											.slice(0, 2)
-											.map(
-												(
-													specialty,
-													idx
-												) => (
-													<span
-														key={
-															idx
-														}
-														className='bg-brand/20 text-brand px-2 py-1 rounded-full text-xs font-medium'
-													>
-														{
-															specialty
-														}
-													</span>
-												)
-											)}
-										{coach.specialties
-											.length > 2 && (
-											<span className='bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs'>
-												+
-												{coach
-													.specialties
-													.length -
-													2}{' '}
-												more
-											</span>
-										)}
-									</div>
-
 									{/* Bio Preview */}
 									<p className='text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3'>
 										{coach.bio}
@@ -434,32 +240,6 @@ export default function CoachesPage() {
 													</p>
 												</div>
 											)}
-
-											{/* All Specialties */}
-											<div>
-												<h4 className='text-white font-semibold text-sm mb-2'>
-													Specialties:
-												</h4>
-												<div className='flex flex-wrap gap-2'>
-													{coach.specialties.map(
-														(
-															specialty,
-															idx
-														) => (
-															<span
-																key={
-																	idx
-																}
-																className='bg-brand/20 text-brand px-2 py-1 rounded-full text-xs font-medium'
-															>
-																{
-																	specialty
-																}
-															</span>
-														)
-													)}
-												</div>
-											</div>
 										</div>
 									)}
 

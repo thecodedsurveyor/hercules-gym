@@ -5,8 +5,6 @@ import React, {
 	useEffect,
 	Suspense,
 	lazy,
-	memo,
-	useCallback,
 } from 'react';
 import {
 	Trophy,
@@ -45,97 +43,45 @@ import {
 	useCompleteChallenge,
 } from '../../hooks/use-dashboard-data';
 
-// Lazy load heavy components for better performance with error boundaries
-const AIContentDisplay = lazy(() =>
-	import('./components/AIContentDisplay').then(
-		(module) => ({ default: module.default })
-	)
+// Lazy load heavy components for better performance
+const AIContentDisplay = lazy(
+	() => import('./components/AIContentDisplay')
 );
-const ChallengesSection = lazy(() =>
-	import('./components/ChallengesSection').then(
-		(module) => ({ default: module.default })
-	)
+const ChallengesSection = lazy(
+	() => import('./components/ChallengesSection')
 );
-const CommunitySection = lazy(() =>
-	import('./components/CommunitySection').then(
-		(module) => ({ default: module.default })
-	)
+const CommunitySection = lazy(
+	() => import('./components/CommunitySection')
 );
-const DailyActivities = lazy(() =>
-	import('./components/DailyActivities').then(
-		(module) => ({ default: module.default })
-	)
+const DailyActivities = lazy(
+	() => import('./components/DailyActivities')
 );
-const GamificationSection = lazy(() =>
-	import('./components/GamificationSection').then(
-		(module) => ({ default: module.default })
-	)
+const GamificationSection = lazy(
+	() => import('./components/GamificationSection')
 );
-const ProgressSummary = lazy(() =>
-	import('./components/ProgressSummary').then(
-		(module) => ({ default: module.default })
-	)
+const ProgressSummary = lazy(
+	() => import('./components/ProgressSummary')
 );
-const WeeklyChallengeProgress = lazy(() =>
-	import('./components/WeeklyChallengeProgress').then(
-		(module) => ({ default: module.default })
-	)
+const WeeklyChallengeProgress = lazy(
+	() => import('./components/WeeklyChallengeProgress')
 );
-const WelcomeSection = lazy(() =>
-	import('./components/WelcomeSection').then(
-		(module) => ({ default: module.default })
-	)
+const WelcomeSection = lazy(
+	() => import('./components/WelcomeSection')
 );
 
-// Memoized loading components
-const LoadingSpinner = memo(() => (
+// Loading components
+const LoadingSpinner = () => (
 	<div className='flex items-center justify-center p-8'>
 		<div className='animate-spin rounded-full h-8 w-8 border-b-2 border-brand'></div>
 	</div>
-));
+);
 
-LoadingSpinner.displayName = 'LoadingSpinner';
-
-const LoadingCard = memo(() => (
+const LoadingCard = () => (
 	<div className='bg-gray-800/50 rounded-xl p-6 animate-pulse'>
 		<div className='h-4 bg-gray-700 rounded w-3/4 mb-4'></div>
 		<div className='h-3 bg-gray-700 rounded w-1/2'></div>
 	</div>
-));
-
-LoadingCard.displayName = 'LoadingCard';
-
-// Error boundary component for lazy loaded components
-const ErrorBoundary = memo(
-	({
-		children,
-		fallback,
-	}: {
-		children: React.ReactNode;
-		fallback?: React.ReactNode;
-	}) => {
-		const [hasError, setHasError] = useState(false);
-
-		if (hasError) {
-			return (
-				fallback || (
-					<div className='text-red-500'>
-						Something went wrong loading this
-						component.
-					</div>
-				)
-			);
-		}
-
-		return (
-			<React.Suspense fallback={<LoadingSpinner />}>
-				{children}
-			</React.Suspense>
-		);
-	}
 );
-
-ErrorBoundary.displayName = 'ErrorBoundary';
 
 interface UserData {
 	id: string;
@@ -428,319 +374,69 @@ export default function DashboardPage() {
 						{/* Main Content Area */}
 						<div className='lg:col-span-2 space-y-8'>
 							{/* Welcome Section */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<WelcomeSection
-									userName={
-										userData?.name ||
-										'User'
-									}
-									todayStats={{
-										workouts:
-											dailyStats
-												.workouts
-												.completed,
-										mealsLogged:
-											dailyStats.meals
-												.logged,
-										pointsEarned:
-											dailyStats
-												.points
-												.earned,
-									}}
-									totalStats={{
-										totalWorkouts:
-											userData?.totalWorkouts ||
-											0,
-										totalCaloriesBurned:
-											userData?.totalCaloriesBurned ||
-											0,
-										currentStreak:
-											userData?.currentStreak ||
-											0,
-									}}
+									userData={userData}
+									dailyStats={dailyStats}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* Progress Summary */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<ProgressSummary
-									weeklyProgress={{
-										workoutsCompleted:
-											dailyStats
-												.workouts
-												.completed,
-										workoutGoal:
-											userData?.weeklyWorkoutGoal ||
-											5,
-										progressPercentage:
-											Math.round(
-												(dailyStats
-													.workouts
-													.completed /
-													(userData?.weeklyWorkoutGoal ||
-														5)) *
-													100
-											),
-									}}
-									fitnessGoals={{
-										primaryGoal:
-											userData?.primaryGoal ||
-											'General Fitness',
-										progressPercentage: 65,
-									}}
-									motivationalStats={{
-										consistentDays:
-											userData?.currentStreak ||
-											0,
-										workoutsToWeeklyGoal:
-											(userData?.weeklyWorkoutGoal ||
-												5) -
-											dailyStats
-												.workouts
-												.completed,
-									}}
+									dashboardData={
+										dashboardData
+									}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* Daily Activities */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<DailyActivities
-									aiContent={{
-										workoutRecommendation:
-											{
-												title: 'Full Body Strength Training',
-												description:
-													'Complete 3 sets of compound exercises focusing on major muscle groups',
-												category:
-													'Strength',
-												priority:
-													'high',
-											},
-										mealPlan: {
-											breakfast:
-												'Oatmeal with berries and nuts',
-											lunch: 'Grilled chicken salad',
-											dinner: 'Salmon with quinoa',
-										},
-										dailyMotivation: {
-											quote: 'Every workout is progress, no matter how small',
-											category:
-												'motivation',
-										},
-									}}
+									activities={activities}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* AI Content Display */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<AIContentDisplay
-									userId={
-										userData?.id || ''
-									}
+									aiContent={aiContent}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* Weekly Challenge Progress */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<WeeklyChallengeProgress
-									userId={
-										userData?.id || ''
+									weeklyProgress={
+										weeklyProgress
+									}
+									isLoading={
+										isWeeklyProgressLoading
 									}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 						</div>
 
 						{/* Sidebar */}
 						<div className='space-y-8'>
 							{/* Challenges Section */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<ChallengesSection
-									dailyChallenge={
-										challenges.find(
-											(c) =>
-												c.type ===
-												'daily'
-										)
-											? {
-													id: challenges
-														.find(
-															(
-																c
-															) =>
-																c.type ===
-																'daily'
-														)!
-														.id.toString(),
-													title:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'daily'
-														)!
-															.title ||
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'daily'
-														)!
-															.name ||
-														'Daily Challenge',
-													description:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'daily'
-														)!
-															.description,
-													points: challenges.find(
-														(
-															c
-														) =>
-															c.type ===
-															'daily'
-													)!
-														.points,
-													type: challenges.find(
-														(
-															c
-														) =>
-															c.type ===
-															'daily'
-													)!.type,
-													isJoined: false,
-													isCompleted:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'daily'
-														)!
-															.completed ||
-														false,
-												}
-											: null
-									}
-									weeklyChallenge={
-										challenges.find(
-											(c) =>
-												c.type ===
-												'weekly'
-										)
-											? {
-													id: challenges
-														.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-														.id.toString(),
-													title:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.title ||
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.name ||
-														'Weekly Challenge',
-													description:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.description,
-													points: challenges.find(
-														(
-															c
-														) =>
-															c.type ===
-															'weekly'
-													)!
-														.points,
-													progress:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.progress ||
-														0,
-													targetValue:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.target ||
-														7,
-													progressPercentage:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.progress
-															? Math.round(
-																	(challenges.find(
-																		(
-																			c
-																		) =>
-																			c.type ===
-																			'weekly'
-																	)!
-																		.progress! /
-																		(challenges.find(
-																			(
-																				c
-																			) =>
-																				c.type ===
-																				'weekly'
-																		)!
-																			.target ||
-																			7)) *
-																		100
-																)
-															: 0,
-													isJoined: false,
-													isCompleted:
-														challenges.find(
-															(
-																c
-															) =>
-																c.type ===
-																'weekly'
-														)!
-															.completed ||
-														false,
-												}
-											: null
+									challenges={challenges}
+									isLoading={
+										isChallengesLoading
 									}
 									onJoinChallenge={
 										joinChallenge
@@ -749,48 +445,33 @@ export default function DashboardPage() {
 										completeChallenge
 									}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* Gamification Section */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<GamificationSection
-									userStats={{
-										totalPoints:
-											userData?.totalPoints ||
-											0,
-										currentRank: 1,
-										achievements: [],
-									}}
-									leaderboard={
-										leaderboard || []
-									}
-									recentAchievements={[]}
+									userData={userData}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 
 							{/* Community Section */}
-							<ErrorBoundary>
+							<Suspense
+								fallback={<LoadingCard />}
+							>
 								<CommunitySection
-									communityPosts={socialPosts.map(
-										(post) => ({
-											id: post.id.toString(),
-											user: {
-												name: post.user,
-											},
-											content:
-												post.content,
-											imageUrls: [],
-											postType:
-												'progress',
-											likes: post.likes,
-											createdAt:
-												post.timestamp,
-											comments: [],
-										})
-									)}
-									userAchievements={[]}
+									leaderboard={
+										leaderboard
+									}
+									socialPosts={
+										socialPosts
+									}
+									isLoading={
+										isLeaderboardLoading
+									}
 								/>
-							</ErrorBoundary>
+							</Suspense>
 						</div>
 					</div>
 				)}

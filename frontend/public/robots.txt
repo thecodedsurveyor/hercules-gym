@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://herculesgym.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /dashboard/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /onboarding/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /pricing
+Allow: /coaches
+Allow: /blog
+Allow: /testimonials
+Allow: /get-started
+Allow: /login
+Allow: /terms
+Allow: /privacy-policy
+
+# Crawl delay (optional)
+Crawl-delay: 1 

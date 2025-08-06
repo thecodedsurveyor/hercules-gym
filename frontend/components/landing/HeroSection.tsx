@@ -1,35 +1,34 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function HeroSection() {
 	return (
 		<section className='relative min-h-screen flex items-center justify-center py-20 md:py-32'>
 			{/* Background Image */}
-			<div
-				className='absolute inset-0 bg-cover bg-center bg-no-repeat'
-				style={{
-					backgroundImage:
-						'url(https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)',
-				}}
-			>
+			<div className='absolute inset-0'>
+				<Image
+					src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+					alt='Hercules Gym - Modern fitness facility with state-of-the-art equipment'
+					fill
+					priority
+					className='object-cover object-center'
+					sizes='100vw'
+					quality={85}
+				/>
 				<div className='absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent'></div>
 			</div>
 
 			{/* Content */}
 			<div className='container mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
 				<div className='grid lg:grid-cols-2 gap-12 items-center'>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8 }}
-						className='space-y-8 md:space-y-10'
-					>
+					<div className='space-y-8 md:space-y-10'>
 						{/* Main Heading */}
 						<div className='space-y-4'>
 							<motion.div
 								initial={{
-									opacity: 0,
+									opacity: 1,
 									x: -20,
 								}}
 								animate={{
@@ -37,8 +36,8 @@ export default function HeroSection() {
 									x: 0,
 								}}
 								transition={{
-									delay: 0.3,
-									duration: 0.8,
+									duration: 0.6,
+									ease: 'easeOut',
 								}}
 								className='relative'
 							>
@@ -55,7 +54,7 @@ export default function HeroSection() {
 
 							<motion.h2
 								initial={{
-									opacity: 0,
+									opacity: 1,
 									x: -20,
 								}}
 								animate={{
@@ -63,8 +62,9 @@ export default function HeroSection() {
 									x: 0,
 								}}
 								transition={{
-									delay: 0.5,
-									duration: 0.8,
+									delay: 0.1,
+									duration: 0.6,
+									ease: 'easeOut',
 								}}
 								className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-highman font-bold leading-tight'
 							>
@@ -79,11 +79,12 @@ export default function HeroSection() {
 
 						{/* Description */}
 						<motion.p
-							initial={{ opacity: 0, y: 20 }}
+							initial={{ opacity: 1, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{
-								delay: 0.7,
-								duration: 0.8,
+								delay: 0.2,
+								duration: 0.6,
+								ease: 'easeOut',
 							}}
 							className='text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed'
 						>
@@ -101,11 +102,12 @@ export default function HeroSection() {
 
 						{/* CTA Buttons */}
 						<motion.div
-							initial={{ opacity: 0, y: 20 }}
+							initial={{ opacity: 1, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{
-								delay: 0.9,
-								duration: 0.8,
+								delay: 0.3,
+								duration: 0.6,
+								ease: 'easeOut',
 							}}
 							className='flex flex-col sm:flex-row gap-4'
 						>
@@ -119,7 +121,7 @@ export default function HeroSection() {
 								Get Started Today
 							</Button>
 						</motion.div>
-					</motion.div>
+					</div>
 				</div>
 			</div>
 		</section>

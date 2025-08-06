@@ -76,23 +76,23 @@ export default function RegularWorkoutPage() {
 
 	const trainers = [
 		{
-			name: 'Chioma Okafor',
-			title: 'General Fitness Coach',
-			imageQuery: 'professional female fitness trainer',
+			name: 'Adebayo Adeleke',
+			title: 'Certified Fitness Trainer',
+			imageQuery: 'fit male athlete gym',
 			specialties: [
 				'General Fitness',
-				'Wellness Coaching',
-				'Lifestyle Training',
+				'Weight Loss',
+				'Endurance Training',
 			],
 		},
 		{
-			name: 'Adebayo Adeleke',
-			title: 'Fitness Specialist',
-			imageQuery: 'professional male fitness trainer',
+			name: 'Ngozi Okafor',
+			title: 'Personal Trainer',
+			imageQuery: 'female fitness trainer gym',
 			specialties: [
-				'Strength Training',
-				'Functional Fitness',
-				'Injury Prevention',
+				'Body Toning',
+				'Cardio Fitness',
+				'Functional Training',
 			],
 		},
 	];
@@ -142,13 +142,10 @@ export default function RegularWorkoutPage() {
 								active lifestyle.
 							</p>
 							<div className='flex flex-col sm:flex-row gap-4'>
-								<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+								<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
 									Start Your Journey
 								</Button>
-								<Button
-									variant='outline'
-									className='border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-8 py-4 rounded-xl font-bold text-lg'
-								>
+								<Button className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'>
 									View Schedule
 								</Button>
 							</div>
@@ -292,7 +289,7 @@ export default function RegularWorkoutPage() {
 						</p>
 					</div>
 
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto'>
+					<div className='grid grid-cols-1 place-items-center md:grid-cols-2 gap-8 justify-items-center max-w-6xl mx-auto'>
 						{trainers.map((trainer, index) => (
 							<Card
 								key={index}
@@ -301,12 +298,16 @@ export default function RegularWorkoutPage() {
 								{/* Trainer Image */}
 								<div className='relative h-64 overflow-hidden'>
 									<UnsplashImageWithHook
-										query={trainer.imageQuery}
+										query={
+											trainer.imageQuery
+										}
 										alt={trainer.name}
 										width={400}
 										height={256}
 										className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-										showAttribution={false}
+										showAttribution={
+											false
+										}
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent'></div>
 									<div className='absolute bottom-4 left-4 right-4'>
@@ -326,7 +327,8 @@ export default function RegularWorkoutPage() {
 										<div className='flex items-center space-x-2'>
 											<Award className='w-4 h-4 text-brand' />
 											<span className='text-gray-300 text-sm font-medium'>
-												Certified Trainer
+												Certified
+												Trainer
 											</span>
 										</div>
 										<div className='flex items-center space-x-2'>
@@ -343,22 +345,29 @@ export default function RegularWorkoutPage() {
 											Specialties
 										</h4>
 										<div className='flex flex-wrap gap-2'>
-											{trainer.specialties.map((specialty, idx) => (
-												<Badge
-													key={idx}
-													variant='secondary'
-													className='bg-brand/20 text-brand border-brand/30 text-xs px-2 py-1'
-												>
-													{specialty}
-												</Badge>
-											))}
+											{trainer.specialties.map(
+												(
+													specialty,
+													idx
+												) => (
+													<Badge
+														key={
+															idx
+														}
+														variant='secondary'
+														className='bg-brand/20 text-brand border-brand/30 text-xs px-2 py-1 hover:bg-transparent hover:text-white hover:border-white/30 transition-all duration-300'
+													>
+														{
+															specialty
+														}
+													</Badge>
+												)
+											)}
 										</div>
 									</div>
 
 									{/* Action Button */}
-									<Button 
-										className='w-full bg-brand hover:bg-brand/80 text-black font-semibold py-2 rounded-lg transition-all duration-200 transform hover:scale-105'
-									>
+									<Button className='w-full bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black font-semibold py-2 rounded-lg transition-all duration-300 transform hover:scale-105'>
 										Book Session
 									</Button>
 								</div>
@@ -387,14 +396,11 @@ export default function RegularWorkoutPage() {
 							guide you every step of the way.
 						</p>
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-							<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
 								Start Regular Workout
 								Program
 							</Button>
-							<Button
-								variant='outline'
-								className='border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-8 py-4 rounded-xl font-bold text-lg'
-							>
+							<Button className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'>
 								Book Free Consultation
 							</Button>
 						</div>

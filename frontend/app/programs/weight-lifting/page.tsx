@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useHeroImage, useCardImages } from '@/hooks/use-unsplash-images';
-import { OptimizedUnsplashImage } from '@/components/ui/unsplash-image';
+import { useRandomCategoryImage } from '@/hooks/use-unsplash-images';
+import { UnsplashImageWithHook } from '@/components/ui/unsplash-image';
 import {
 	ChevronsRight,
 	Dumbbell,
@@ -17,11 +17,16 @@ import {
 	Clock,
 	Award,
 	CheckCircle,
+	Zap,
 } from 'lucide-react';
 
 export default function WeightLiftingPage() {
-	const { images: heroImages } = useHeroImage('WEIGHT_LIFTING');
-	const { images: benefitsImages } = useCardImages('WEIGHT_LIFTING', 1);
+	const { image: heroImage } = useRandomCategoryImage(
+		'WEIGHT_LIFTING'
+	);
+	const { image: benefitsImage } = useRandomCategoryImage(
+		'WEIGHT_LIFTING'
+	);
 
 	const features = [
 		{
@@ -75,7 +80,8 @@ export default function WeightLiftingPage() {
 		{
 			name: 'Adebayo Adeleke',
 			title: 'Strength Training Specialist',
-			imageQuery: 'professional male strength trainer',
+			imageQuery:
+				'bodybuilder male powerlifting athlete muscular',
 			specialties: [
 				'Powerlifting',
 				'Olympic Lifting',
@@ -85,7 +91,8 @@ export default function WeightLiftingPage() {
 		{
 			name: 'Emeka Nwankwo',
 			title: 'Performance Coach',
-			imageQuery: 'professional male fitness coach',
+			imageQuery:
+				'bodybuilder male bodybuilding competition muscular',
 			specialties: [
 				'Athletic Performance',
 				'Strength Conditioning',
@@ -100,60 +107,72 @@ export default function WeightLiftingPage() {
 			<section className='relative py-12 md:py-20 overflow-hidden'>
 				{/* Background Image */}
 				<div className='absolute inset-0 z-0'>
-					{heroImages && heroImages.length > 0 ? (
-						<OptimizedUnsplashImage
-							category='WEIGHT_LIFTING'
-							useCase='hero'
-							alt='Weight Lifting'
-							priority={true}
+					{heroImage ? (
+						<Image
+							src={heroImage.urls.regular}
+							alt={
+								heroImage.alt_description ||
+								'Weight Lifting Training'
+							}
+							fill
 							className='object-cover opacity-20'
 						/>
 					) : (
-						<div className='w-full h-full bg-gray-800 opacity-20'></div>
+						<div className='w-full h-full bg-gray-800'></div>
 					)}
+					<div className='absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90'></div>
 				</div>
 
-				{/* Content */}
-				<div className='relative z-10 container mx-auto px-4 py-16 md:py-24'>
-					<div className='flex flex-col lg:flex-row items-center gap-12'>
+				<div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+					{/* Header */}
+					<div className='mb-2 pl-0'>
+						<ChevronsRight className='w-12 h-12 md:w-24 md:h-24 text-brand' />
+					</div>
+
+					<div className='flex flex-col lg:flex-row items-center gap-8 lg:gap-12'>
 						<div className='w-full lg:w-1/2'>
-							<div className='relative'>
-								{benefitsImages && benefitsImages.length > 0 ? (
-									<OptimizedUnsplashImage
-										category='WEIGHT_LIFTING'
-										useCase='card'
-										alt='Weight Lifting Training'
-										className='rounded-2xl shadow-2xl'
-										showAttribution={false}
-									/>
-								) : (
-									<div className='w-full h-full bg-gray-800 rounded-2xl shadow-2xl'></div>
-								)}
-								<div className='absolute -bottom-4 -right-4 bg-brand text-black px-4 py-2 rounded-full font-bold text-sm'>
-									₦65,000/month
-								</div>
+							<h1 className='text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-6'>
+								WEIGHT{' '}
+								<span className='text-brand'>
+									LIFTING
+								</span>
+							</h1>
+							<p className='text-lg md:text-xl text-gray-300 leading-relaxed mb-8'>
+								Build strength, power, and
+								muscle mass through our
+								comprehensive weight lifting
+								programs. From beginners to
+								advanced lifters, we have
+								the perfect training plan to
+								help you achieve your
+								strength goals.
+							</p>
+							<div className='flex flex-col sm:flex-row gap-4'>
+								<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+									Start Your Journey
+								</Button>
+								<Button
+									variant='outline'
+									className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'
+								>
+									View Schedule
+								</Button>
 							</div>
 						</div>
 
-						<div className='w-full lg:w-1/2 space-y-6'>
-							<div className='mb-2'>
-								<ChevronsRight className='w-12 h-12 md:w-24 md:h-24 text-brand' />
-							</div>
-							<h1 className='text-4xl md:text-6xl font-bold mb-6'>
-								WEIGHT LIFTING
-							</h1>
-							<p className='text-lg md:text-xl text-gray-300 mb-8'>
-								Build strength, power, and muscle mass through our
-								comprehensive weight lifting programs designed for all
-								fitness levels.
-							</p>
-							<div className='flex flex-col sm:flex-row gap-4'>
-								<Button size='lg' className='bg-brand text-black hover:bg-brand/90'>
-									Start Training
-								</Button>
-								<Button size='lg' variant='outline'>
-									Learn More
-								</Button>
+						<div className='w-full lg:w-1/2'>
+							<div className='relative'>
+								<UnsplashImageWithHook
+									query='weight lifting strength training'
+									alt='Weight Lifting Training'
+									width={600}
+									height={400}
+									className='rounded-2xl shadow-2xl'
+									showAttribution={false}
+								/>
+								<div className='absolute -bottom-4 -right-4 bg-brand text-black px-4 py-2 rounded-full font-bold text-sm'>
+									₦65,000/month
+								</div>
 							</div>
 						</div>
 					</div>
@@ -161,27 +180,47 @@ export default function WeightLiftingPage() {
 			</section>
 
 			{/* Features Section */}
-			<section className='py-16 md:py-24 bg-gray-900'>
-				<div className='container mx-auto px-4'>
-					<div className='text-center mb-16'>
-						<h2 className='text-3xl md:text-5xl font-bold mb-6'>
-							WHY CHOOSE OUR WEIGHT LIFTING PROGRAM?
+			<section className='py-12 md:py-20 bg-gray-900/50'>
+				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+					<div className='text-center mb-12'>
+						<h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4'>
+							Why Choose Our{' '}
+							<span className='text-brand'>
+								Weight Lifting
+							</span>{' '}
+							Program?
 						</h2>
-						<p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-							Our comprehensive approach combines expert coaching, personalized
-							programs, and state-of-the-art equipment to maximize your results.
+						<p className='text-gray-300 text-lg max-w-3xl mx-auto'>
+							Our weight lifting program
+							combines science-based training
+							methods with expert coaching to
+							help you build strength, power,
+							and muscle mass safely and
+							effectively.
 						</p>
 					</div>
 
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8'>
 						{features.map((feature, index) => (
 							<Card
 								key={index}
-								className='p-6 bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 hover:bg-gray-800/60 transition-all duration-300'
+								className='bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 p-6 hover:bg-gray-800/80 transition-all duration-300'
 							>
-								<feature.icon className='w-12 h-12 text-brand mb-4' />
-								<h3 className='text-xl font-bold mb-3'>{feature.title}</h3>
-								<p className='text-gray-300'>{feature.description}</p>
+								<div className='flex items-start space-x-4'>
+									<div className='bg-brand/20 p-3 rounded-xl'>
+										<feature.icon className='w-6 h-6 text-brand' />
+									</div>
+									<div>
+										<h3 className='text-white font-bold text-lg mb-2'>
+											{feature.title}
+										</h3>
+										<p className='text-gray-300 text-sm leading-relaxed'>
+											{
+												feature.description
+											}
+										</p>
+									</div>
+								</div>
 							</Card>
 						))}
 					</div>
@@ -189,37 +228,51 @@ export default function WeightLiftingPage() {
 			</section>
 
 			{/* Benefits Section */}
-			<section className='py-16 md:py-24 bg-black'>
-				<div className='container mx-auto px-4'>
+			<section className='py-12 md:py-20 bg-black'>
+				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
 					<div className='flex flex-col lg:flex-row items-center gap-12'>
 						<div className='w-full lg:w-1/2'>
-							{benefitsImages && benefitsImages.length > 0 ? (
-								<OptimizedUnsplashImage
-									category='WEIGHT_LIFTING'
-									useCase='card'
-									alt='Weight Lifting Benefits'
-									className='rounded-2xl shadow-2xl'
-									showAttribution={false}
-								/>
-							) : (
-								<div className='w-full h-full bg-gray-800 rounded-2xl shadow-2xl'></div>
-							)}
+							<UnsplashImageWithHook
+								query='weight lifting strength training'
+								alt='Weight Lifting Benefits'
+								width={600}
+								height={400}
+								className='rounded-2xl shadow-2xl'
+								showAttribution={false}
+							/>
 						</div>
 
-						<div className='w-full lg:w-1/2 space-y-6'>
-							<div className='mb-2'>
-								<Dumbbell className='w-12 h-12 md:w-24 md:h-24 text-brand' />
-							</div>
-							<h2 className='text-3xl md:text-5xl font-bold mb-6'>
-								BENEFITS OF WEIGHT LIFTING
+						<div className='w-full lg:w-1/2'>
+							<h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6'>
+								Transform Your{' '}
+								<span className='text-brand'>
+									Strength & Power
+								</span>
 							</h2>
+							<p className='text-gray-300 text-lg mb-8 leading-relaxed'>
+								Weight lifting is essential
+								for building muscle mass,
+								increasing strength, and
+								improving overall fitness.
+								Our program is designed to
+								challenge you while ensuring
+								proper form and safety.
+							</p>
+
 							<div className='space-y-4'>
-								{benefits.map((benefit, index) => (
-									<div key={index} className='flex items-center gap-3'>
-										<CheckCircle className='w-6 h-6 text-brand flex-shrink-0' />
-										<span className='text-gray-300'>{benefit}</span>
-									</div>
-								))}
+								{benefits.map(
+									(benefit, index) => (
+										<div
+											key={index}
+											className='flex items-center space-x-3'
+										>
+											<CheckCircle className='w-5 h-5 text-brand flex-shrink-0' />
+											<span className='text-gray-300'>
+												{benefit}
+											</span>
+										</div>
+									)
+								)}
 							</div>
 						</div>
 					</div>
@@ -227,16 +280,22 @@ export default function WeightLiftingPage() {
 			</section>
 
 			{/* Trainers Section */}
-			<section className='py-16 md:py-24 bg-gray-900'>
-				<div className='container mx-auto px-4'>
-					<div className='text-center mb-16'>
-						<h2 className='text-3xl md:text-5xl font-bold mb-6'>
-							MEET OUR WEIGHT LIFTING EXPERTS
+			<section className='py-12 md:py-20 bg-gray-900/50'>
+				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+					<div className='text-center mb-12'>
+						<h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4'>
+							Meet Our{' '}
+							<span className='text-brand'>
+								Weight Lifting Experts
+							</span>
 						</h2>
-						<p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-							Our certified weight lifting specialists are passionate about
-							helping you achieve your strength and muscle building goals
-							through effective and safe training methods.
+						<p className='text-gray-300 text-lg max-w-3xl mx-auto'>
+							Our certified weight lifting
+							specialists are passionate about
+							helping you achieve your
+							strength and muscle building
+							goals through effective and safe
+							training methods.
 						</p>
 					</div>
 
@@ -244,25 +303,28 @@ export default function WeightLiftingPage() {
 						{trainers.map((trainer, index) => (
 							<Card
 								key={index}
-								className='group overflow-hidden hover:shadow-2xl hover:shadow-brand/10 hover:scale-105 transition-all duration-500 w-full max-w-sm'
+								className='group bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 overflow-hidden hover:bg-gray-800/80 transition-all duration-300 hover:shadow-2xl hover:shadow-brand/10 hover:scale-105'
 							>
 								{/* Trainer Image */}
 								<div className='relative h-64 overflow-hidden'>
-									<OptimizedUnsplashImage
-										category='PERSONAL_TRAINING'
-										useCase='card'
+									<UnsplashImageWithHook
+										query={
+											trainer.imageQuery
+										}
 										alt={trainer.name}
+										width={400}
+										height={256}
 										className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-										showAttribution={false}
+										showAttribution={
+											false
+										}
 									/>
-									{/* Gradient Overlay */}
 									<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent'></div>
-									{/* Trainer Name and Title */}
 									<div className='absolute bottom-4 left-4 right-4'>
-										<h3 className='text-xl mb-1 font-semibold text-white'>
+										<h3 className='text-white font-bold text-xl mb-1'>
 											{trainer.name}
 										</h3>
-										<p className='font-semibold text-sm text-gray-200'>
+										<p className='text-brand font-semibold text-sm'>
 											{trainer.title}
 										</p>
 									</div>
@@ -271,37 +333,51 @@ export default function WeightLiftingPage() {
 								{/* Trainer Info */}
 								<div className='p-6'>
 									{/* Experience & Certifications */}
-									<div className='flex items-center gap-4 mb-4 text-sm text-gray-300'>
-										<div className='flex items-center gap-2'>
+									<div className='flex items-center justify-between mb-4'>
+										<div className='flex items-center space-x-2'>
 											<Award className='w-4 h-4 text-brand' />
-											<span>Certified Trainer</span>
+											<span className='text-gray-300 text-sm font-medium'>
+												Certified
+												Trainer
+											</span>
 										</div>
-										<div className='flex items-center gap-2'>
+										<div className='flex items-center space-x-2'>
 											<Users className='w-4 h-4 text-brand' />
-											<span>8+ Years</span>
+											<span className='text-gray-300 text-sm font-medium'>
+												8+ Years
+											</span>
 										</div>
 									</div>
 
 									{/* Specialties */}
-									<div className='mb-6'>
-										<h4 className='font-semibold text-sm text-gray-400 mb-3 uppercase tracking-wide'>
+									<div className='mb-4'>
+										<h4 className='text-white font-semibold text-sm mb-3 uppercase tracking-wide'>
 											Specialties
 										</h4>
 										<div className='flex flex-wrap gap-2'>
-											{trainer.specialties.map((specialty, idx) => (
-												<Badge
-													key={idx}
-													variant='secondary'
-													className='text-xs px-2 py-1 bg-gray-700 text-gray-200'
-												>
-													{specialty}
-												</Badge>
-											))}
+											{trainer.specialties.map(
+												(
+													specialty,
+													idx
+												) => (
+													<Badge
+														key={
+															idx
+														}
+														variant='secondary'
+														className='bg-brand/20 text-brand border-brand/30 text-xs px-2 py-1 hover:bg-transparent hover:text-white hover:border-white/30 transition-all duration-300'
+													>
+														{
+															specialty
+														}
+													</Badge>
+												)
+											)}
 										</div>
 									</div>
 
-									{/* Book Session Button */}
-									<Button className='w-full bg-brand text-black hover:bg-brand/90'>
+									{/* Action Button */}
+									<Button className='w-full bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black font-semibold py-2 rounded-lg transition-all duration-300 transform hover:scale-105'>
 										Book Session
 									</Button>
 								</div>
@@ -330,12 +406,12 @@ export default function WeightLiftingPage() {
 							you achieve your fitness goals.
 						</p>
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-							<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
 								Start Weight Lifting Program
 							</Button>
 							<Button
 								variant='outline'
-								className='border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-8 py-4 rounded-xl font-bold text-lg'
+								className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'
 							>
 								Book Free Consultation
 							</Button>

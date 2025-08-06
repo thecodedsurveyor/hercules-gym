@@ -78,7 +78,7 @@ export default function CardioPage() {
 		{
 			name: 'Emeka Nwankwo',
 			title: 'Cardio & HIIT Specialist',
-			imageQuery: 'professional male personal trainer',
+			imageQuery: 'cardio male athlete running',
 			specialties: [
 				'HIIT Training',
 				'Endurance Running',
@@ -88,7 +88,7 @@ export default function CardioPage() {
 		{
 			name: 'Chioma Okafor',
 			title: 'Cardio Fitness Coach',
-			imageQuery: 'professional female personal trainer',
+			imageQuery: 'female cardio fitness trainer gym',
 			specialties: [
 				'Dance Cardio',
 				'Aerobic Training',
@@ -144,12 +144,12 @@ export default function CardioPage() {
 								level.
 							</p>
 							<div className='flex flex-col sm:flex-row gap-4'>
-								<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+								<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
 									Start Your Journey
 								</Button>
 								<Button
 									variant='outline'
-									className='border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-8 py-4 rounded-xl font-bold text-lg'
+									className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'
 								>
 									View Schedule
 								</Button>
@@ -303,12 +303,16 @@ export default function CardioPage() {
 								{/* Trainer Image */}
 								<div className='relative h-64 overflow-hidden'>
 									<UnsplashImageWithHook
-										query={trainer.imageQuery}
+										query={
+											trainer.imageQuery
+										}
 										alt={trainer.name}
 										width={400}
 										height={256}
 										className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-										showAttribution={false}
+										showAttribution={
+											false
+										}
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent'></div>
 									<div className='absolute bottom-4 left-4 right-4'>
@@ -328,7 +332,8 @@ export default function CardioPage() {
 										<div className='flex items-center space-x-2'>
 											<Award className='w-4 h-4 text-brand' />
 											<span className='text-gray-300 text-sm font-medium'>
-												Certified Trainer
+												Certified
+												Trainer
 											</span>
 										</div>
 										<div className='flex items-center space-x-2'>
@@ -345,22 +350,29 @@ export default function CardioPage() {
 											Specialties
 										</h4>
 										<div className='flex flex-wrap gap-2'>
-											{trainer.specialties.map((specialty, idx) => (
-												<Badge
-													key={idx}
-													variant='secondary'
-													className='bg-brand/20 text-brand border-brand/30 text-xs px-2 py-1'
-												>
-													{specialty}
-												</Badge>
-											))}
+											{trainer.specialties.map(
+												(
+													specialty,
+													idx
+												) => (
+													<Badge
+														key={
+															idx
+														}
+														variant='secondary'
+														className='bg-brand/20 text-brand border-brand/30 text-xs px-2 py-1 hover:bg-transparent hover:text-white hover:border-white/30 transition-all duration-300'
+													>
+														{
+															specialty
+														}
+													</Badge>
+												)
+											)}
 										</div>
 									</div>
 
 									{/* Action Button */}
-									<Button 
-										className='w-full bg-brand hover:bg-brand/80 text-black font-semibold py-2 rounded-lg transition-all duration-200 transform hover:scale-105'
-									>
+									<Button className='w-full bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black font-semibold py-2 rounded-lg transition-all duration-300 transform hover:scale-105'>
 										Book Session
 									</Button>
 								</div>
@@ -389,12 +401,12 @@ export default function CardioPage() {
 							you achieve your fitness goals.
 						</p>
 						<div className='flex flex-col sm:flex-row gap-4 justify-center'>
-							<Button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
+							<Button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-brand/25'>
 								Start Cardio Program
 							</Button>
 							<Button
 								variant='outline'
-								className='border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 px-8 py-4 rounded-xl font-bold text-lg'
+								className='bg-transparent border-2 border-gray-600 text-gray-300 hover:bg-gray-700/50 hover:text-white hover:border-gray-400 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300'
 							>
 								Book Free Consultation
 							</Button>

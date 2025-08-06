@@ -214,7 +214,7 @@ export default function ProgramsPage() {
 										)}
 									</div>
 
-									<button className='w-full bg-brand hover:bg-brand/80 text-black py-3 rounded-xl font-bold transition-all duration-200 transform hover:scale-105'>
+									<button className='w-full bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105'>
 										Join Program
 									</button>
 								</div>
@@ -294,7 +294,7 @@ export default function ProgramsPage() {
 						expert trainers to find the perfect
 						program for your goals.
 					</p>
-					<button className='bg-brand hover:bg-brand/80 text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 transform hover:scale-105'>
+					<button className='bg-transparent border-2 border-brand text-brand hover:bg-brand hover:text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105'>
 						Schedule Consultation
 					</button>
 				</div>

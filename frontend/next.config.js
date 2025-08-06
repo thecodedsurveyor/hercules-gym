@@ -14,11 +14,16 @@ const nextConfig = {
 		// Enable package import optimization
 		optimizePackageImports: [
 			'lucide-react',
+			'framer-motion',
 			'@radix-ui/react-icons',
 		],
 		// Enable webpack memory optimizations
 		webpackMemoryOptimizations: true,
-		// Enable turbo for faster builds
+		// Enable server components
+		serverComponentsExternalPackages: [
+			'@prisma/client',
+		],
+		// Enable turbo
 		turbo: {
 			rules: {
 				'*.svg': {
@@ -27,12 +32,6 @@ const nextConfig = {
 				},
 			},
 		},
-		// Enable concurrent features
-		concurrentFeatures: true,
-		// Enable server components
-		serverComponentsExternalPackages: [
-			'@prisma/client',
-		],
 	},
 
 	// Optimize images
@@ -48,15 +47,16 @@ const nextConfig = {
 			640, 750, 828, 1080, 1200, 1920, 2048, 3840,
 		],
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-		minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days for better caching
+		minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days for better caching
 		// Enable modern image formats
 		formats: ['image/webp', 'image/avif'],
 		// Optimize image loading
 		loader: 'default',
 		// Enable blur placeholder
 		placeholder: 'blur',
-		// Enable priority loading for above-the-fold images
-		priority: true,
+		// Add content security policy
+		contentSecurityPolicy:
+			"default-src 'self'; script-src 'none'; sandbox;",
 	},
 
 	// Enable compression
@@ -65,7 +65,7 @@ const nextConfig = {
 	// Optimize bundle
 	swcMinify: true,
 
-	// Enable source maps for development only
+	// Enable source maps for development
 	productionBrowserSourceMaps: false,
 
 	// Optimize webpack
@@ -87,17 +87,15 @@ const nextConfig = {
 						chunks: 'all',
 						priority: 5,
 					},
-					// Separate React and Next.js
-					react: {
-						test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-						name: 'react',
+					framer: {
+						test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+						name: 'framer-motion',
 						chunks: 'all',
 						priority: 20,
 					},
-					// Separate UI libraries
-					ui: {
-						test: /[\\/]node_modules[\\/](@radix-ui|lucide-react)[\\/]/,
-						name: 'ui',
+					radix: {
+						test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
+						name: 'radix-ui',
 						chunks: 'all',
 						priority: 15,
 					},
@@ -105,12 +103,17 @@ const nextConfig = {
 			};
 		}
 
-		// Optimize for production
-		if (!dev) {
-			config.optimization.minimize = true;
-			config.optimization.minimizer =
-				config.optimization.minimizer || [];
-		}
+		// Optimize for performance
+		config.optimization.minimize = true;
+		config.optimization.minimizer =
+			config.optimization.minimizer || [];
+
+		// Add performance hints
+		config.performance = {
+			hints: dev ? false : 'warning',
+			maxEntrypointSize: 512000,
+			maxAssetSize: 512000,
+		};
 
 		return config;
 	},
@@ -135,7 +138,11 @@ const nextConfig = {
 					},
 					{
 						key: 'Referrer-Policy',
-						value: 'strict-origin-when-cross-origin',
+						value: 'origin-when-cross-origin',
+					},
+					{
+						key: 'Permissions-Policy',
+						value: 'camera=(), microphone=(), geolocation=()',
 					},
 				],
 			},
@@ -149,7 +156,7 @@ const nextConfig = {
 				],
 			},
 			{
-				source: '/_next/image/(.*)',
+				source: '/images/(.*)',
 				headers: [
 					{
 						key: 'Cache-Control',
@@ -162,14 +169,14 @@ const nextConfig = {
 				headers: [
 					{
 						key: 'Cache-Control',
-						value: 'public, max-age=300, s-maxage=600',
+						value: 'public, max-age=3600, s-maxage=3600',
 					},
 				],
 			},
 		];
 	},
 
-	// Enable redirects for better SEO and performance
+	// Enable redirects for SEO
 	async redirects() {
 		return [
 			{
@@ -178,6 +185,24 @@ const nextConfig = {
 				permanent: true,
 			},
 		];
+	},
+
+	// Enable rewrites for better routing
+	async rewrites() {
+		return [
+			{
+				source: '/sitemap.xml',
+				destination: '/api/sitemap',
+			},
+		];
+	},
+
+	// Enable PWA
+	pwa: {
+		dest: 'public',
+		register: true,
+		skipWaiting: true,
+		disable: process.env.NODE_ENV === 'development',
 	},
 };
 

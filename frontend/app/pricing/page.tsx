@@ -195,9 +195,20 @@ export default function PricingPage() {
 	>('monthly');
 
 	return (
-		<main className='bg-black min-h-screen'>
+		<main className='bg-black min-h-screen relative'>
+			{/* Background Image */}
+			<div
+				className='absolute inset-0 bg-cover bg-center bg-no-repeat'
+				style={{
+					backgroundImage:
+						'url(https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)',
+				}}
+			>
+				<div className='absolute inset-0 bg-black/80'></div>
+			</div>
+
 			{/* Hero Section */}
-			<section className='py-20 md:py-32'>
+			<section className='py-20 md:py-32 relative z-10'>
 				<div className='container mx-auto px-4'>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -259,7 +270,7 @@ export default function PricingPage() {
 			</section>
 
 			{/* Pricing Cards */}
-			<section className='py-12'>
+			<section className='py-12 relative z-10'>
 				<div className='container mx-auto px-4'>
 					<div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
 						{plans.map((plan, index) => (
@@ -277,7 +288,7 @@ export default function PricingPage() {
 									duration: 0.5,
 									delay: index * 0.1,
 								}}
-								className={`relative bg-gray-900 rounded-3xl p-8 ${
+								className={`relative bg-gray-900/90 backdrop-blur-sm rounded-3xl p-8 ${
 									plan.popular
 										? 'ring-2 ring-brand'
 										: ''
@@ -365,7 +376,7 @@ export default function PricingPage() {
 			</section>
 
 			{/* Features Section */}
-			<section className='py-12 md:py-24 bg-gray-900'>
+			<section className='py-12 md:py-24 bg-gray-900/90 backdrop-blur-sm relative z-10'>
 				<div className='container mx-auto px-4'>
 					<div className='mb-2'>
 						<ChevronsRight className='w-12 h-12 md:w-24 md:h-24 text-brand' />
@@ -442,7 +453,7 @@ export default function PricingPage() {
 									duration: 0.5,
 									delay: index * 0.1,
 								}}
-								className='bg-gray-800 rounded-2xl p-6'
+								className='bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6'
 							>
 								<h3 className='text-lg font-bold mb-2'>
 									{feature.title}
@@ -457,7 +468,7 @@ export default function PricingPage() {
 			</section>
 
 			{/* FAQs Section */}
-			<section className='py-12 md:py-24'>
+			<section className='py-12 md:py-24 relative z-10'>
 				<div className='container mx-auto px-4'>
 					<div className='text-center max-w-3xl mx-auto mb-12'>
 						<h2 className='text-3xl md:text-5xl font-bold mb-6'>
@@ -491,7 +502,7 @@ export default function PricingPage() {
 									duration: 0.5,
 									delay: index * 0.1,
 								}}
-								className='bg-gray-900 rounded-2xl p-6'
+								className='bg-gray-900/90 backdrop-blur-sm rounded-2xl p-6'
 							>
 								<div className='flex items-start gap-3 mb-3'>
 									<HelpCircle className='w-6 h-6 text-brand flex-shrink-0' />
@@ -509,7 +520,7 @@ export default function PricingPage() {
 			</section>
 
 			{/* CTA Section */}
-			<section className='py-12 md:py-24 bg-gray-900'>
+			<section className='py-12 md:py-24 bg-gray-900/90 backdrop-blur-sm relative z-10'>
 				<div className='container mx-auto px-4 text-center'>
 					<h2 className='text-3xl md:text-5xl font-bold mb-6'>
 						READY TO START YOUR{' '}

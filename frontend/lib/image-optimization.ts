@@ -12,15 +12,18 @@ export const BREAKPOINTS = {
 	'2xl': 1536,
 } as const;
 
-// Device sizes for responsive images
+// Device sizes for responsive images (optimized for common screen sizes)
 export const DEVICE_SIZES = [
 	640, 750, 828, 1080, 1200, 1920, 2048, 3840,
 ];
 
-// Image sizes for different use cases
+// Image sizes for different use cases (optimized for performance)
 export const IMAGE_SIZES = [
 	16, 32, 48, 64, 96, 128, 256, 384,
 ];
+
+// Cache for optimized URLs to avoid regeneration
+const urlCache = new Map<string, string>();
 
 /**
  * Generate responsive image sizes attribute
@@ -49,6 +52,14 @@ export function generateOptimizedUnsplashUrl(
 	format: ImageFormat = 'webp',
 	quality: number = 80
 ): string {
+	// Create cache key
+	const cacheKey = `${imageUrl}-${width}-${height}-${format}-${quality}`;
+
+	// Check cache first
+	if (urlCache.has(cacheKey)) {
+		return urlCache.get(cacheKey)!;
+	}
+
 	const url = new URL(imageUrl);
 
 	// Add optimization parameters
@@ -62,7 +73,15 @@ export function generateOptimizedUnsplashUrl(
 	url.searchParams.set('q', quality.toString());
 	url.searchParams.set('auto', 'format');
 
-	return url.toString();
+	// Add cache parameters for better CDN performance
+	url.searchParams.set('cs', 'tinysrgb');
+
+	const optimizedUrl = url.toString();
+
+	// Cache the result
+	urlCache.set(cacheKey, optimizedUrl);
+
+	return optimizedUrl;
 }
 
 /**
@@ -103,23 +122,20 @@ export function generateSrcSet(
 	format: ImageFormat = 'webp',
 	quality: number = 80
 ): string {
-	return sizes
-		.map((size) => {
-			const optimizedUrl =
-				generateOptimizedUnsplashUrl(
-					imageUrl,
-					size,
-					undefined,
-					format,
-					quality
-				);
-			return `${optimizedUrl} ${size}w`;
-		})
+	const urls = generateResponsiveUnsplashUrls(
+		imageUrl,
+		sizes,
+		format,
+		quality
+	);
+
+	return urls
+		.map((url, index) => `${url} ${sizes[index]}w`)
 		.join(', ');
 }
 
 /**
- * Optimize UnsplashImage object with responsive URLs
+ * Optimize Unsplash image with responsive URLs and proper sizing
  */
 export function optimizeUnsplashImage(
 	image: UnsplashImage,
@@ -132,36 +148,52 @@ export function optimizeUnsplashImage(
 	sizes: string;
 	placeholder: string;
 } {
-	const optimizedSrc = generateOptimizedUnsplashUrl(
+	// Use optimal format
+	const optimalFormat = getOptimalFormat();
+
+	// Generate responsive sizes based on target width
+	const responsiveSizes = DEVICE_SIZES.filter(
+		(size) => size <= targetWidth * 2
+	);
+
+	// Generate optimized source URL
+	const src = generateOptimizedUnsplashUrl(
 		image.urls.raw,
 		targetWidth,
 		targetHeight,
-		format
+		optimalFormat,
+		85 // Higher quality for main image
 	);
 
+	// Generate srcSet for responsive loading
 	const srcSet = generateSrcSet(
 		image.urls.raw,
-		[targetWidth, targetWidth * 1.5, targetWidth * 2],
-		format
+		responsiveSizes,
+		optimalFormat,
+		75 // Lower quality for responsive images to save bandwidth
 	);
 
-	const sizes = generateSizes(`${targetWidth}px`, {
-		sm: `${Math.min(targetWidth, 640)}px`,
-		md: `${Math.min(targetWidth, 768)}px`,
-		lg: `${Math.min(targetWidth, 1024)}px`,
-		xl: `${Math.min(targetWidth, 1280)}px`,
-	});
+	// Generate sizes attribute
+	const sizes = generateSizes(`${targetWidth}px`);
+
+	// Use blur hash for placeholder if available
+	const placeholder = image.blur_hash
+		? `data:image/svg+xml;base64,${image.blur_hash}`
+		: generateBlurDataURL(
+				targetWidth,
+				targetHeight || targetWidth
+			);
 
 	return {
-		src: optimizedSrc,
+		src,
 		srcSet,
 		sizes,
-		placeholder: image.urls.thumb || image.urls.small,
+		placeholder,
 	};
 }
 
 /**
- * Get appropriate image sizes for different use cases
+ * Get image sizes for different use cases
  */
 export function getImageSizesForUseCase(
 	useCase: 'hero' | 'card' | 'thumbnail' | 'gallery'
@@ -205,21 +237,52 @@ export function getImageSizesForUseCase(
 }
 
 /**
- * Generate blur data URL for placeholder
+ * Generate a simple blur data URL for placeholder
  */
 export function generateBlurDataURL(
 	width: number,
 	height: number
 ): string {
-	const canvas = document.createElement('canvas');
-	canvas.width = width;
-	canvas.height = height;
-	const ctx = canvas.getContext('2d');
+	// Create a simple SVG placeholder
+	const svg = `
+		<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+			<rect width="100%" height="100%" fill="#f3f4f6"/>
+			<text x="50%" y="50%" font-family="Arial, sans-serif" font-size="14" fill="#9ca3af" text-anchor="middle" dy=".3em">Loading...</text>
+		</svg>
+	`;
 
-	if (ctx) {
-		ctx.fillStyle = '#f3f4f6';
-		ctx.fillRect(0, 0, width, height);
+	return `data:image/svg+xml;base64,${btoa(svg)}`;
+}
+
+/**
+ * Preload critical images
+ */
+export function preloadImage(src: string): void {
+	if (typeof window !== 'undefined') {
+		const link = document.createElement('link');
+		link.rel = 'preload';
+		link.as = 'image';
+		link.href = src;
+		document.head.appendChild(link);
 	}
+}
 
-	return canvas.toDataURL();
+/**
+ * Clear URL cache (useful for memory management)
+ */
+export function clearUrlCache(): void {
+	urlCache.clear();
+}
+
+/**
+ * Get cache statistics
+ */
+export function getCacheStats(): {
+	size: number;
+	keys: string[];
+} {
+	return {
+		size: urlCache.size,
+		keys: Array.from(urlCache.keys()),
+	};
 }
