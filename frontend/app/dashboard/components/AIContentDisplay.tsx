@@ -20,7 +20,7 @@ import {
 	Sparkles,
 	Play,
 	ChefHat,
-} from 'lucide-react';
+} from '@/lib/icons';
 import { useAIContent } from '../../../hooks/use-dashboard-data';
 
 interface AIContentDisplayProps {

@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, fadeInUp } from '@/lib/motion';
 import {
 	Calendar,
 	Clock,
 	Target,
 	CheckCircle2,
 	Plus,
-} from 'lucide-react';
+} from '@/lib/icons';
 import {
 	Card,
 	CardContent,
@@ -19,44 +19,60 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 
 interface ChallengesSectionProps {
-	dailyChallenge: {
-		id: string;
-		title: string;
-		description: string;
-		points: number;
-		type: string;
-		isJoined: boolean;
-		isCompleted: boolean;
-	} | null;
-	weeklyChallenge: {
-		id: string;
-		title: string;
-		description: string;
-		points: number;
-		progress: number;
-		targetValue: number;
-		progressPercentage: number;
-		isJoined: boolean;
-		isCompleted: boolean;
-	} | null;
-	onJoinChallenge: (
+	availableChallenges?: any[];
+	isLoading?: boolean;
+	onJoinChallenge?: (
 		challengeId: string,
 		challengeType: 'daily' | 'weekly'
 	) => void;
-	onCompleteChallenge: (challengeEntryId: string) => void;
+	onCompleteChallenge?: (
+		challengeEntryId: string
+	) => void;
 }
 
 export default function ChallengesSection({
-	dailyChallenge,
-	weeklyChallenge,
+	availableChallenges,
+	isLoading,
 	onJoinChallenge,
 	onCompleteChallenge,
 }: ChallengesSectionProps) {
+	// Add null checks and fallbacks
+	const safeChallenges = availableChallenges || [];
+
+	// Mock challenges for now
+	const dailyChallenge = safeChallenges.find(
+		(challenge) => challenge.type === 'daily'
+	) || {
+		id: 'daily-1',
+		title: 'Complete 30 minutes of cardio',
+		description:
+			'Get your heart rate up with some cardio exercise',
+		points: 50,
+		type: 'cardio',
+		isJoined: false,
+		isCompleted: false,
+	};
+
+	const weeklyChallenge = safeChallenges.find(
+		(challenge) => challenge.type === 'weekly'
+	) || {
+		id: 'weekly-1',
+		title: 'Complete 5 workouts this week',
+		description:
+			'Stay consistent with your fitness routine',
+		points: 200,
+		progress: 2,
+		targetValue: 5,
+		progressPercentage: 40,
+		isJoined: true,
+		isCompleted: false,
+	};
+
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, delay: 0.4 }}
+			variants={fadeInUp}
+			initial='initial'
+			animate='animate'
 			className='mb-8'
 		>
 			<h2 className='text-2xl font-bold text-white mb-6'>
@@ -118,7 +134,7 @@ export default function ChallengesSection({
 									<Button
 										className='w-full bg-green-500 hover:bg-green-600 text-white'
 										onClick={() =>
-											onCompleteChallenge(
+											onCompleteChallenge?.(
 												dailyChallenge.id
 											)
 										}
@@ -130,7 +146,7 @@ export default function ChallengesSection({
 									<Button
 										className='w-full bg-green-500 hover:bg-green-600 text-white'
 										onClick={() =>
-											onJoinChallenge(
+											onJoinChallenge?.(
 												dailyChallenge.id,
 												'daily'
 											)
@@ -235,7 +251,7 @@ export default function ChallengesSection({
 									<Button
 										className='w-full bg-blue-500 hover:bg-blue-600 text-white'
 										onClick={() =>
-											onJoinChallenge(
+											onJoinChallenge?.(
 												weeklyChallenge.id,
 												'weekly'
 											)

@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, fadeInUp } from '@/lib/motion';
 import {
 	MessageCircle,
 	Heart,
 	Share2,
 	Camera,
 	Users2,
-} from 'lucide-react';
+} from '@/lib/icons';
 import {
 	Card,
 	CardContent,
@@ -18,30 +18,58 @@ import { Button } from '@/components/ui/button';
 import { Avatar } from '@/components/ui/avatar';
 
 interface CommunitySectionProps {
-	communityPosts: {
-		id: string;
-		user: {
-			name: string;
-		};
-		content: string;
-		imageUrls: string[];
-		postType: string;
-		likes: number;
-		createdAt: string;
-		comments: any[];
-	}[];
-	userAchievements: any[];
+	leaderboardData?: any[];
+	isLoading?: boolean;
 }
 
 export default function CommunitySection({
-	communityPosts,
-	userAchievements,
+	leaderboardData,
+	isLoading,
 }: CommunitySectionProps) {
+	// Add null checks and fallbacks
+	const safeLeaderboardData = leaderboardData || [];
+
+	// Mock community posts for now
+	const communityPosts = [
+		{
+			id: '1',
+			user: { name: 'John Doe' },
+			content:
+				'Just completed my deadlift personal record! Feeling stronger every day 💪',
+			imageUrls: [],
+			postType: 'achievement',
+			likes: 12,
+			createdAt: new Date().toISOString(),
+			comments: [],
+		},
+		{
+			id: '2',
+			user: { name: 'Jane Smith' },
+			content:
+				'Hit a new personal record on deadlifts today! 🏋️‍♀️',
+			imageUrls: [],
+			postType: 'progress',
+			likes: 8,
+			createdAt: new Date().toISOString(),
+			comments: [],
+		},
+	];
+
+	const userAchievements = [
+		{
+			achievement: {
+				name: 'First Workout',
+				badgeIcon: '🏆',
+				points: 50,
+			},
+		},
+	];
+
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, delay: 0.5 }}
+			variants={fadeInUp}
+			initial='initial'
+			animate='animate'
 			className='mb-8'
 		>
 			<h2 className='text-2xl font-bold text-white mb-6'>

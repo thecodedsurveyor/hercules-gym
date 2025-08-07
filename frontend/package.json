@@ -56,6 +56,7 @@
 		"embla-carousel-react": "^8.3.0",
 		"eslint": "8.49.0",
 		"eslint-config-next": "14.2.5",
+		"framer-motion": "^11.0.0",
 		"input-otp": "^1.2.4",
 		"lucide-react": "^0.446.0",
 		"next": "14.2.5",
@@ -75,5 +76,8 @@
 		"typescript": "5.2.2",
 		"vaul": "^0.9.9",
 		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@next/bundle-analyzer": "^14.2.5"
 	}
 }

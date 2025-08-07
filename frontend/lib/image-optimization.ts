@@ -251,7 +251,12 @@ export function generateBlurDataURL(
 		</svg>
 	`;
 
-	return `data:image/svg+xml;base64,${btoa(svg)}`;
+	// Use Buffer for Node.js compatibility during build
+	const base64 = typeof window !== 'undefined' 
+		? btoa(svg)
+		: Buffer.from(svg).toString('base64');
+
+	return `data:image/svg+xml;base64,${base64}`;
 }
 
 /**

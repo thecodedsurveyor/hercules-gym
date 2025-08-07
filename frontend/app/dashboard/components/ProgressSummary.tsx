@@ -1,12 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, fadeInUp } from '@/lib/motion';
 import {
 	TrendingUp,
 	Target,
 	Calendar,
 	Award,
-} from 'lucide-react';
+} from '@/lib/icons';
 import {
 	Card,
 	CardContent,
@@ -61,9 +61,9 @@ export default function ProgressSummary({
 
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, delay: 0.1 }}
+			variants={fadeInUp}
+			initial='initial'
+			animate='animate'
 			className='mb-8'
 		>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>

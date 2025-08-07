@@ -31,7 +31,7 @@ import {
 	Moon,
 	Sun,
 	Sparkles,
-} from 'lucide-react';
+} from '@/lib/icons';
 import { toast } from 'sonner';
 import {
 	useDashboardData,
@@ -378,8 +378,34 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<WelcomeSection
-									userData={userData}
-									dailyStats={dailyStats}
+									userName={
+										userData?.name ||
+										'Fitness Warrior'
+									}
+									todayStats={{
+										workouts:
+											dailyStats
+												.workouts
+												.completed,
+										mealsLogged:
+											dailyStats.meals
+												.logged,
+										pointsEarned:
+											dailyStats
+												.points
+												.earned,
+									}}
+									totalStats={{
+										totalWorkouts:
+											userData?.totalWorkouts ||
+											0,
+										totalCaloriesBurned:
+											userData?.totalCaloriesBurned ||
+											0,
+										currentStreak:
+											userData?.currentStreak ||
+											0,
+									}}
 								/>
 							</Suspense>
 
@@ -388,9 +414,47 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<ProgressSummary
-									dashboardData={
-										dashboardData
-									}
+									weeklyProgress={{
+										workoutsCompleted:
+											dailyStats
+												.workouts
+												.completed,
+										workoutGoal:
+											dailyStats
+												.workouts
+												.target,
+										progressPercentage:
+											Math.round(
+												(dailyStats
+													.workouts
+													.completed /
+													dailyStats
+														.workouts
+														.target) *
+													100
+											),
+									}}
+									fitnessGoals={{
+										primaryGoal:
+											userData?.primaryGoal ||
+											'Build Strength',
+										progressPercentage: 65,
+									}}
+									motivationalStats={{
+										consistentDays:
+											userData?.currentStreak ||
+											0,
+										workoutsToWeeklyGoal:
+											Math.max(
+												0,
+												dailyStats
+													.workouts
+													.target -
+													dailyStats
+														.workouts
+														.completed
+											),
+									}}
 								/>
 							</Suspense>
 
@@ -399,7 +463,9 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<DailyActivities
-									activities={activities}
+									todayActivities={
+										activities
+									}
 								/>
 							</Suspense>
 
@@ -408,7 +474,9 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<AIContentDisplay
-									aiContent={aiContent}
+									userId={
+										userData?.id || ''
+									}
 								/>
 							</Suspense>
 
@@ -417,7 +485,7 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<WeeklyChallengeProgress
-									weeklyProgress={
+									progress={
 										weeklyProgress
 									}
 									isLoading={
@@ -434,7 +502,9 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<ChallengesSection
-									challenges={challenges}
+									availableChallenges={
+										challenges
+									}
 									isLoading={
 										isChallengesLoading
 									}
@@ -461,11 +531,8 @@ export default function DashboardPage() {
 								fallback={<LoadingCard />}
 							>
 								<CommunitySection
-									leaderboard={
+									leaderboardData={
 										leaderboard
-									}
-									socialPosts={
-										socialPosts
 									}
 									isLoading={
 										isLeaderboardLoading

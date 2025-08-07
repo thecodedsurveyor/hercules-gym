@@ -54,9 +54,7 @@ export const metadata: Metadata = {
 		creator: '@herculesgym',
 		site: '@herculesgym',
 	},
-	viewport:
-		'width=device-width, initial-scale=1, maximum-scale=5',
-	themeColor: '#c4ff00',
+
 	manifest: '/manifest.json',
 	alternates: {
 		canonical: 'https://herculesgym.com',
@@ -70,6 +68,13 @@ export const metadata: Metadata = {
 			'black-translucent',
 		'apple-mobile-web-app-title': 'Hercules Gym',
 	},
+};
+
+export const viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 5,
+	themeColor: '#c4ff00',
 };
 
 export default function RootLayout({

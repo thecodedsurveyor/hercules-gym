@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, fadeInUp } from '@/lib/motion';
 import {
 	Trophy,
 	Medal,
 	Star,
 	Crown,
 	Users,
-} from 'lucide-react';
+} from '@/lib/icons';
 import {
 	Card,
 	CardContent,
@@ -18,38 +18,32 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 
 interface GamificationSectionProps {
-	userStats: {
-		totalPoints: number;
-		currentRank: number;
-		achievements: any[];
-	};
-	leaderboard: {
+	userData: {
 		id: string;
 		name: string;
-		totalPoints: number;
-		currentStreak: number;
-	}[];
-	recentAchievements: {
-		achievement: {
-			name: string;
-			description: string;
-			badgeIcon: string;
-			points: number;
-		};
-		earnedAt: string;
-	}[];
+		totalPoints?: number;
+		currentRank?: number;
+		achievements?: any[];
+	} | null;
 }
 
 export default function GamificationSection({
-	userStats,
-	leaderboard,
-	recentAchievements,
+	userData,
 }: GamificationSectionProps) {
+	// Add null checks and fallbacks
+	const safeUserData = userData || {
+		id: '',
+		name: '',
+		totalPoints: 0,
+		currentRank: 0,
+		achievements: [],
+	};
+
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5, delay: 0.3 }}
+			variants={fadeInUp}
+			initial='initial'
+			animate='animate'
 			className='mb-8'
 		>
 			<h2 className='text-2xl font-bold text-white mb-6'>
@@ -71,7 +65,8 @@ export default function GamificationSection({
 								<Crown className='w-8 h-8 text-yellow-500' />
 							</div>
 							<p className='text-3xl font-bold text-white mb-1'>
-								{userStats.totalPoints}
+								{safeUserData.totalPoints ||
+									0}
 							</p>
 							<p className='text-yellow-400 text-sm'>
 								Total Points
@@ -80,7 +75,8 @@ export default function GamificationSection({
 						<div className='text-center pt-3 border-t border-white/10'>
 							<p className='text-white font-medium'>
 								Rank #
-								{userStats.currentRank}
+								{safeUserData.currentRank ||
+									0}
 							</p>
 							<p className='text-gray-400 text-xs'>
 								You&apos;re in the top
@@ -100,7 +96,10 @@ export default function GamificationSection({
 					</CardHeader>
 					<CardContent>
 						<div className='space-y-3'>
-							{recentAchievements
+							{(
+								safeUserData.achievements ||
+								[]
+							)
 								.slice(0, 3)
 								.map(
 									(
@@ -113,28 +112,19 @@ export default function GamificationSection({
 										>
 											<div className='w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center'>
 												<span className='text-sm'>
-													{
-														achievement
-															.achievement
-															.badgeIcon
-													}
+													{achievement?.badgeIcon ||
+														'🏆'}
 												</span>
 											</div>
 											<div className='flex-1'>
 												<p className='text-white text-sm font-medium'>
-													{
-														achievement
-															.achievement
-															.name
-													}
+													{achievement?.name ||
+														'Recent Achievement'}
 												</p>
 												<p className='text-gray-400 text-xs'>
 													+
-													{
-														achievement
-															.achievement
-															.points
-													}{' '}
+													{achievement?.points ||
+														0}{' '}
 													points
 												</p>
 											</div>
@@ -144,8 +134,10 @@ export default function GamificationSection({
 										</div>
 									)
 								)}
-							{recentAchievements.length ===
-								0 && (
+							{(
+								safeUserData.achievements ||
+								[]
+							).length === 0 && (
 								<div className='text-center py-4'>
 									<p className='text-gray-400 text-sm'>
 										Complete your first
@@ -168,11 +160,11 @@ export default function GamificationSection({
 					</CardHeader>
 					<CardContent>
 						<div className='space-y-3'>
-							{leaderboard
-								.slice(0, 5)
-								.map((user, index) => (
+							{/* Placeholder leaderboard data */}
+							{Array.from({ length: 5 }).map(
+								(_, index) => (
 									<div
-										key={user.id}
+										key={index}
 										className='flex items-center space-x-3'
 									>
 										<div
@@ -192,16 +184,20 @@ export default function GamificationSection({
 										</div>
 										<div className='flex-1'>
 											<p className='text-white text-sm font-medium truncate'>
-												{user.name}
+												{index === 0
+													? 'You'
+													: `User ${index + 1}`}
 											</p>
 											<p className='text-gray-400 text-xs'>
-												{
-													user.totalPoints
-												}{' '}
+												{Math.floor(
+													Math.random() *
+														1000
+												)}{' '}
 												pts •{' '}
-												{
-													user.currentStreak
-												}{' '}
+												{Math.floor(
+													Math.random() *
+														30
+												)}{' '}
 												day streak
 											</p>
 										</div>
@@ -219,7 +215,8 @@ export default function GamificationSection({
 											/>
 										)}
 									</div>
-								))}
+								)
+							)}
 						</div>
 					</CardContent>
 				</Card>

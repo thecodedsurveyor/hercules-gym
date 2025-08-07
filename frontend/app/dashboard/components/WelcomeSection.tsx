@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Trophy, Zap, Target } from 'lucide-react';
+import { motion, fadeInUp } from '@/lib/motion';
+import { Trophy, Zap, Target } from '@/lib/icons';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface WelcomeSectionProps {
@@ -25,9 +25,9 @@ export default function WelcomeSection({
 }: WelcomeSectionProps) {
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.5 }}
+			variants={fadeInUp}
+			initial='initial'
+			animate='animate'
 			className='mb-8'
 		>
 			<Card className='bg-gradient-to-r from-brand/10 to-brand/5 border-brand/20'>
@@ -38,8 +38,8 @@ export default function WelcomeSection({
 								Welcome back, {userName}! 🔥
 							</h1>
 							<p className='text-gray-300 text-lg mb-4'>
-								Let's crush today's fitness
-								goals!
+								Let&apos;s crush
+								today&apos;s fitness goals!
 							</p>
 							<div className='flex flex-wrap gap-4 text-sm text-gray-400'>
 								<span>

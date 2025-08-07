@@ -18,10 +18,11 @@ import {
 	Trophy,
 	Target,
 	Clock,
-} from 'lucide-react';
+} from '@/lib/icons';
 
 interface WeeklyChallengeProgressProps {
-	userId: string;
+	progress: WeeklyChallengeData | null | undefined;
+	isLoading: boolean;
 }
 
 interface DailyBreakdown {
@@ -39,96 +40,52 @@ interface DailyBreakdown {
 }
 
 interface WeeklyChallengeData {
-	hasActiveChallenge: boolean;
-	challenge: {
-		id: string;
-		title: string;
+	weeklyChallenge: {
+		id: string | number;
+		name?: string;
+		title?: string;
 		description: string;
-		type: string;
-		targetValue: number;
 		points: number;
-		startDate: Date;
-		endDate: Date;
-	} | null;
+		difficulty?: string;
+		type: string;
+		progress?: number;
+		completed?: boolean;
+		reward?: string;
+		status?: string;
+		target?: number;
+	};
 	progress: {
-		current: number;
-		target: number;
 		percentage: number;
-		isCompleted: boolean;
-		daysRemaining: number;
-		isJoined: boolean;
-		joinedAt?: Date;
-		completedAt?: Date;
-		dailyBreakdown: DailyBreakdown[];
-	} | null;
+		completedDays: number;
+		totalDays: number;
+		weeklyBreakdown: Array<{
+			date: Date;
+			dayName: string;
+			value: number;
+			activities: Array<{
+				id: string;
+				name: string;
+				value: number;
+				time: string;
+			}>;
+			isToday: boolean;
+			isCompleted: boolean;
+		}>;
+	};
 }
 
 export default function WeeklyChallengeProgress({
-	userId,
+	progress,
+	isLoading,
 }: WeeklyChallengeProgressProps) {
-	const [challengeData, setChallengeData] =
-		useState<WeeklyChallengeData | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
+	// Use the passed props instead of internal state
+	const challengeData = progress;
+	const loading = isLoading;
+	const error = null; // Error handling should be done at the parent level
 
-	const fetchChallengeProgress = async () => {
-		try {
-			setLoading(true);
-			const response = await fetch(
-				`http://localhost:3002/dashboard/weekly-challenge-progress/${userId}`
-			);
+	// Data fetching is now handled by the parent component
 
-			if (!response.ok) {
-				throw new Error(
-					'Failed to fetch challenge progress'
-				);
-			}
-
-			const data = await response.json();
-			setChallengeData(data);
-			setError(null);
-		} catch (err) {
-			console.error(
-				'Error fetching challenge progress:',
-				err
-			);
-			setError('Failed to load challenge progress');
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const joinChallenge = async () => {
-		if (!challengeData?.challenge) return;
-
-		try {
-			const response = await fetch(
-				'http://localhost:3002/dashboard/join-challenge',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						userId,
-						challengeId:
-							challengeData.challenge.id,
-						challengeType: 'weekly',
-					}),
-				}
-			);
-
-			if (response.ok) {
-				await fetchChallengeProgress(); // Refresh data
-			}
-		} catch (err) {
-			console.error('Error joining challenge:', err);
-		}
-	};
-
-	useEffect(() => {
-		fetchChallengeProgress();
-	}, [userId]);
+	// Challenge actions should be handled by the parent component
 
 	if (loading) {
 		return (
@@ -171,7 +128,9 @@ export default function WeeklyChallengeProgress({
 				<CardContent>
 					<p className='text-red-600'>{error}</p>
 					<Button
-						onClick={fetchChallengeProgress}
+						onClick={() =>
+							window.location.reload()
+						}
 						className='mt-4'
 					>
 						Try Again
@@ -181,7 +140,7 @@ export default function WeeklyChallengeProgress({
 		);
 	}
 
-	if (!challengeData?.hasActiveChallenge) {
+	if (!challengeData?.weeklyChallenge) {
 		return (
 			<Card className='w-full'>
 				<CardHeader>
@@ -203,16 +162,19 @@ export default function WeeklyChallengeProgress({
 		);
 	}
 
-	const { challenge, progress } = challengeData;
+	const { weeklyChallenge, progress: challengeProgress } =
+		challengeData;
 
-	if (!challenge || !progress) {
+	if (!weeklyChallenge || !challengeProgress) {
 		return null;
 	}
 
 	const getProgressColor = () => {
-		if (progress.isCompleted) return 'bg-green-500';
-		if (progress.percentage >= 75) return 'bg-blue-500';
-		if (progress.percentage >= 50)
+		if (challengeProgress.percentage >= 100)
+			return 'bg-green-500';
+		if (challengeProgress.percentage >= 75)
+			return 'bg-blue-500';
+		if (challengeProgress.percentage >= 50)
 			return 'bg-yellow-500';
 		return 'bg-gray-400';
 	};
@@ -234,10 +196,13 @@ export default function WeeklyChallengeProgress({
 				<CardTitle className='flex items-center justify-between'>
 					<div className='flex items-center gap-2'>
 						<Target className='h-5 w-5' />
-						{challenge.title}
+						{weeklyChallenge.title ||
+							weeklyChallenge.name ||
+							'Weekly Challenge'}
 					</div>
 					<div className='flex items-center gap-2'>
-						{progress.isCompleted && (
+						{challengeProgress.percentage >=
+							100 && (
 							<Badge
 								variant='default'
 								className='bg-green-500'
@@ -247,12 +212,12 @@ export default function WeeklyChallengeProgress({
 							</Badge>
 						)}
 						<Badge variant='outline'>
-							{challenge.points} pts
+							{weeklyChallenge.points} pts
 						</Badge>
 					</div>
 				</CardTitle>
 				<CardDescription>
-					{challenge.description}
+					{weeklyChallenge.description}
 				</CardDescription>
 			</CardHeader>
 
@@ -261,54 +226,40 @@ export default function WeeklyChallengeProgress({
 				<div className='space-y-3'>
 					<div className='flex justify-between items-center'>
 						<span className='text-sm font-medium'>
-							Progress: {progress.current} /{' '}
-							{progress.target}{' '}
+							Progress:{' '}
+							{
+								challengeProgress.completedDays
+							}{' '}
+							/ {challengeProgress.totalDays}{' '}
 							{formatChallengeType(
-								challenge.type
+								weeklyChallenge.type
 							)}
 						</span>
 						<span className='text-sm text-muted-foreground'>
-							{progress.percentage}%
+							{challengeProgress.percentage}%
 						</span>
 					</div>
 
 					<Progress
-						value={progress.percentage}
+						value={challengeProgress.percentage}
 						className='h-3'
 					/>
 
 					<div className='flex justify-between items-center text-sm text-muted-foreground'>
 						<span className='flex items-center gap-1'>
 							<Clock className='h-3 w-3' />
-							{progress.daysRemaining} days
-							remaining
+							{challengeProgress.totalDays -
+								challengeProgress.completedDays}{' '}
+							days remaining
 						</span>
-						{progress.joinedAt && (
-							<span>
-								Joined{' '}
-								{new Date(
-									progress.joinedAt
-								).toLocaleDateString()}
-							</span>
-						)}
 					</div>
 				</div>
 
-				{/* Join Button (if not joined) */}
-				{!progress.isJoined && (
-					<div className='text-center'>
-						<Button
-							onClick={joinChallenge}
-							className='w-full'
-						>
-							Join Challenge
-						</Button>
-					</div>
-				)}
-
 				{/* Daily Breakdown */}
-				{progress.isJoined &&
-					progress.dailyBreakdown && (
+				{challengeProgress.weeklyBreakdown &&
+					Array.isArray(
+						challengeProgress.weeklyBreakdown
+					) && (
 						<div className='space-y-3'>
 							<h4 className='font-medium flex items-center gap-2'>
 								<Calendar className='h-4 w-4' />
@@ -316,7 +267,7 @@ export default function WeeklyChallengeProgress({
 							</h4>
 
 							<div className='grid grid-cols-7 gap-2'>
-								{progress.dailyBreakdown.map(
+								{challengeProgress.weeklyBreakdown.map(
 									(day, index) => (
 										<div
 											key={index}
@@ -343,7 +294,7 @@ export default function WeeklyChallengeProgress({
 											</div>
 
 											<div className='text-xs font-bold'>
-												{challenge.type ===
+												{weeklyChallenge.type ===
 												'workout'
 													? day.value >
 														0
@@ -366,70 +317,76 @@ export default function WeeklyChallengeProgress({
 							</div>
 
 							{/* Daily Activities */}
-							{progress.dailyBreakdown.some(
-								(day) =>
-									day.isToday &&
-									day.activities.length >
-										0
-							) && (
-								<div className='mt-4 p-4 bg-muted/50 rounded-lg'>
-									<h5 className='font-medium mb-2'>
-										Today's Activities
-									</h5>
-									<div className='space-y-1'>
-										{progress.dailyBreakdown
-											.find(
-												(day) =>
-													day.isToday
-											)
-											?.activities.map(
-												(
-													activity,
-													index
-												) => (
-													<div
-														key={
-															index
-														}
-														className='flex justify-between text-sm'
-													>
-														<span>
-															{
-																activity.name
-															}
-														</span>
-														<span className='text-muted-foreground'>
-															{challenge.type ===
-															'workout'
-																? '1 workout'
-																: `${activity.value} cal`}
-														</span>
-													</div>
+							{challengeProgress.weeklyBreakdown &&
+								Array.isArray(
+									challengeProgress.weeklyBreakdown
+								) &&
+								challengeProgress.weeklyBreakdown.some(
+									(day) =>
+										day &&
+										day.isToday &&
+										day.activities &&
+										Array.isArray(
+											day.activities
+										) &&
+										day.activities
+											.length > 0
+								) && (
+									<div className='mt-4 p-4 bg-muted/50 rounded-lg'>
+										<h5 className='font-medium mb-2'>
+											Today's
+											Activities
+										</h5>
+										<div className='space-y-1'>
+											{challengeProgress.weeklyBreakdown
+												.find(
+													(day) =>
+														day.isToday
 												)
-											)}
+												?.activities?.map(
+													(
+														activity,
+														index
+													) => (
+														<div
+															key={
+																index
+															}
+															className='flex justify-between text-sm'
+														>
+															<span>
+																{
+																	activity.name
+																}
+															</span>
+															<span className='text-muted-foreground'>
+																{weeklyChallenge.type ===
+																'workout'
+																	? '1 workout'
+																	: `${activity.value} cal`}
+															</span>
+														</div>
+													)
+												)}
+										</div>
 									</div>
-								</div>
-							)}
+								)}
 						</div>
 					)}
 
 				{/* Completion Message */}
-				{progress.isCompleted &&
-					progress.completedAt && (
-						<div className='text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg'>
-							<Trophy className='h-8 w-8 text-green-500 mx-auto mb-2' />
-							<p className='font-medium text-green-700 dark:text-green-300'>
-								Challenge Completed!
-							</p>
-							<p className='text-sm text-green-600 dark:text-green-400'>
-								You earned{' '}
-								{challenge.points} points on{' '}
-								{new Date(
-									progress.completedAt
-								).toLocaleDateString()}
-							</p>
-						</div>
-					)}
+				{challengeProgress.percentage >= 100 && (
+					<div className='text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg'>
+						<Trophy className='h-8 w-8 text-green-500 mx-auto mb-2' />
+						<p className='font-medium text-green-700 dark:text-green-300'>
+							Challenge Completed!
+						</p>
+						<p className='text-sm text-green-600 dark:text-green-400'>
+							You earned{' '}
+							{weeklyChallenge.points} points!
+						</p>
+					</div>
+				)}
 			</CardContent>
 		</Card>
 	);
